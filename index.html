@@ -7,73 +7,71 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0f0d14;
-  --surface: #1a1625;
-  --surface2: #221d30;
-  --surface3: #2d2640;
-  --border: #3a3050;
-  --border2: #4a4060;
-  --text: #f0ecff;
-  --text2: #a89ec8;
-  --text3: #6b6388;
-  --accent: #9d6fff;
-  --accent2: #7c4fe0;
-  --accent-soft: rgba(157,111,255,0.12);
-  --accent-soft2: rgba(157,111,255,0.22);
-  --green: #4cde9e;
-  --green-soft: rgba(76,222,158,0.12);
-  --amber: #f5c842;
-  --amber-soft: rgba(245,200,66,0.12);
-  --red: #ff6b7a;
-  --red-soft: rgba(255,107,122,0.12);
-  --blue: #5bb8ff;
-  --blue-soft: rgba(91,184,255,0.12);
-  --radius: 10px;
-  --radius-lg: 14px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --bg: #0e0b09;
+  --surface: #171210;
+  --surface2: #1f1815;
+  --surface3: #2a201b;
+  --border: #3a2a22;
+  --border2: #4e3828;
+  --text: #f5ede4;
+  --text2: #b89880;
+  --text3: #6e5040;
+  --accent: #c0392b;
+  --accent2: #96281b;
+  --accent-soft: rgba(192,57,43,0.12);
+  --accent-soft2: rgba(192,57,43,0.2);
+  --gold: #c9963a;
+  --gold2: #a87c2e;
+  --gold-soft: rgba(201,150,58,0.14);
+  --gold-soft2: rgba(201,150,58,0.22);
+  --green: #5cb85c;
+  --green-soft: rgba(92,184,92,0.13);
+  --amber: #d4a017;
+  --amber-soft: rgba(212,160,23,0.13);
+  --red: #c0392b;
+  --red-soft: rgba(192,57,43,0.13);
+  --blue: #6fa8c9;
+  --blue-soft: rgba(111,168,201,0.13);
+  --radius: 9px;
+  --radius-lg: 13px;
+  --shadow: 0 6px 28px rgba(0,0,0,0.55);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; line-height: 1.5; }
-
-/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
-
-/* ── Layout ── */
 .app { display: flex; height: 100vh; overflow: hidden; }
-.sidebar { width: 220px; min-width: 220px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 0; overflow-y: auto; }
+.sidebar { width: 222px; min-width: 222px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
 .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 .topbar { height: 56px; min-height: 56px; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 20px; gap: 12px; }
 .content { flex: 1; overflow-y: auto; padding: 20px; }
-
-/* ── Sidebar ── */
 .sidebar-logo { padding: 18px 16px 12px; display: flex; align-items: center; gap: 10px; }
-.logo-mark { width: 28px; height: 28px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.logo-mark { width: 28px; height: 28px; background: var(--accent); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
 .logo-mark svg { width: 16px; height: 16px; }
 .logo-text { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.3px; }
-
 .sidebar-section { padding: 8px 10px 4px; }
-.sidebar-label { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; padding: 0 6px; margin-bottom: 4px; }
+.sidebar-label { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 0.09em; text-transform: uppercase; padding: 0 6px; margin-bottom: 4px; }
 .nav-item { display: flex; align-items: center; gap: 9px; padding: 7px 10px; border-radius: 8px; cursor: pointer; color: var(--text2); font-size: 13px; font-weight: 400; transition: all 0.15s; user-select: none; border: none; background: none; width: 100%; text-align: left; }
 .nav-item:hover { background: var(--surface3); color: var(--text); }
 .nav-item.active { background: var(--accent-soft2); color: var(--accent); font-weight: 500; }
 .nav-item svg { width: 15px; height: 15px; flex-shrink: 0; }
 .nav-badge { margin-left: auto; background: var(--accent); color: #fff; font-size: 10px; font-weight: 600; border-radius: 99px; padding: 1px 6px; min-width: 18px; text-align: center; }
 .nav-badge.overdue { background: var(--red); }
-
 .sidebar-tags { padding: 4px 10px 8px; }
-.tag-item { display: flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: 8px; cursor: pointer; font-size: 12px; color: var(--text2); transition: all 0.15s; }
+.tag-item { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 8px; cursor: pointer; font-size: 12px; color: var(--text2); transition: all 0.15s; }
 .tag-item:hover { background: var(--surface3); color: var(--text); }
 .tag-item.active { color: var(--text); background: var(--surface3); }
 .tag-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.tag-add { color: var(--text3); font-size: 12px; }
-
-/* ── Topbar ── */
+.tag-name { flex: 1; }
+.tag-del-btn { display: none; background: none; border: none; color: var(--text3); cursor: pointer; padding: 2px; border-radius: 4px; line-height: 0; }
+.tag-item:hover .tag-del-btn { display: flex; align-items: center; }
+.tag-del-btn:hover { color: var(--red); }
+.tag-del-btn svg { width: 11px; height: 11px; }
 .search-wrap { position: relative; flex: 1; max-width: 320px; }
 .search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--text3); pointer-events: none; }
 .search-input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px 6px 32px; color: var(--text); font-family: inherit; font-size: 13px; outline: none; transition: border-color 0.15s; }
-.search-input:focus { border-color: var(--accent); }
+.search-input:focus { border-color: var(--gold); }
 .search-input::placeholder { color: var(--text3); }
 .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; border: none; outline: none; }
@@ -81,55 +79,44 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .btn-primary:hover { background: var(--accent2); }
 .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
 .btn-ghost:hover { background: var(--surface3); color: var(--text); border-color: var(--border2); }
+.btn-gold { background: var(--gold); color: #0e0b09; font-weight: 600; }
+.btn-gold:hover { background: var(--gold2); }
 .btn-icon { padding: 7px; }
 .btn svg { width: 14px; height: 14px; }
-.view-toggle { display: flex; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-.view-btn { padding: 5px 10px; cursor: pointer; color: var(--text3); font-size: 12px; border: none; background: none; transition: all 0.15s; }
-.view-btn.active { background: var(--accent-soft2); color: var(--accent); }
 .page-title { font-size: 16px; font-weight: 600; color: var(--text); }
-
-/* ── Stats bar ── */
 .stats-row { display: flex; gap: 10px; margin-bottom: 16px; }
 .stat-card { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; }
-.stat-label { font-size: 11px; color: var(--text3); font-weight: 500; margin-bottom: 4px; }
+.stat-label { font-size: 10px; color: var(--text3); font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.07em; }
 .stat-value { font-size: 22px; font-weight: 600; color: var(--text); line-height: 1; }
-.stat-value.green { color: var(--green); }
-.stat-value.amber { color: var(--amber); }
-.stat-value.red { color: var(--red); }
-.stat-value.accent { color: var(--accent); }
-
-/* ── Quick Add ── */
-.quick-add-bar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 12px 14px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.c-gold { color: var(--gold); }
+.c-green { color: var(--green); }
+.c-amber { color: var(--amber); }
+.c-red { color: var(--red); }
+.quick-add-bar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 11px 14px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .quick-input { flex: 1; background: none; border: none; outline: none; color: var(--text); font-family: inherit; font-size: 14px; }
 .quick-input::placeholder { color: var(--text3); }
-
-/* ── Task list ── */
 .task-group { margin-bottom: 20px; }
 .task-group-header { display: flex; align-items: center; gap: 8px; padding: 6px 0; margin-bottom: 6px; cursor: pointer; }
-.task-group-title { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; }
+.task-group-title { font-size: 10px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.09em; }
 .task-group-count { font-size: 10px; color: var(--text3); background: var(--surface2); border-radius: 99px; padding: 1px 7px; }
 .task-group-line { flex: 1; height: 1px; background: var(--border); }
 .task-group-chevron { width: 12px; height: 12px; color: var(--text3); transition: transform 0.2s; }
 .task-group-chevron.collapsed { transform: rotate(-90deg); }
 .tasks-container { display: flex; flex-direction: column; gap: 4px; }
-
-.task-row { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 11px 14px; display: flex; align-items: flex-start; gap: 10px; transition: border-color 0.15s, box-shadow 0.15s; cursor: default; position: relative; }
-.task-row:hover { border-color: var(--border2); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-.task-row.dragging { opacity: 0.5; border: 2px dashed var(--accent); }
-.task-row.drag-over { border-color: var(--accent); background: var(--accent-soft); }
+.task-row { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 11px 14px; display: flex; align-items: flex-start; gap: 10px; transition: border-color 0.15s, box-shadow 0.15s; position: relative; }
+.task-row:hover { border-color: var(--border2); box-shadow: 0 2px 10px rgba(0,0,0,0.35); }
+.task-row.dragging { opacity: 0.45; border: 2px dashed var(--gold); }
+.task-row.drag-over { border-color: var(--gold); background: var(--gold-soft); }
 .task-row.completed .task-title { text-decoration: line-through; color: var(--text3); }
 .task-row.on-hold { border-left: 3px solid var(--amber); }
-.task-row.completed { border-left: 3px solid var(--green); opacity: 0.7; }
-
+.task-row.completed { border-left: 3px solid var(--green); opacity: 0.65; }
 .task-check { width: 17px; height: 17px; border-radius: 50%; border: 2px solid var(--border2); flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; margin-top: 1px; transition: all 0.15s; }
 .task-check:hover { border-color: var(--green); }
 .task-check.done { background: var(--green); border-color: var(--green); }
-.task-check.done svg { display: block; }
 .task-check svg { width: 9px; height: 9px; display: none; }
-
-.task-body { flex: 1; min-width: 0; }
-.task-title { font-size: 13.5px; font-weight: 400; color: var(--text); margin-bottom: 4px; word-break: break-word; }
-.task-title strong { font-weight: 600; }
+.task-check.done svg { display: block; }
+.task-body { flex: 1; min-width: 0; cursor: pointer; }
+.task-title { font-size: 13.5px; font-weight: 400; color: var(--text); margin-bottom: 5px; word-break: break-word; }
 .task-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .task-tag { font-size: 11px; padding: 2px 8px; border-radius: 99px; font-weight: 500; }
 .task-priority { font-size: 11px; padding: 2px 8px; border-radius: 99px; font-weight: 600; }
@@ -138,50 +125,42 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .priority-low { background: var(--blue-soft); color: var(--blue); }
 .task-due { font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 3px; }
 .task-due.overdue { color: var(--red); }
-.task-due.today { color: var(--amber); }
+.task-due.duetoday { color: var(--amber); }
 .task-assignee { font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 4px; }
-.task-assignee-avatar { width: 16px; height: 16px; border-radius: 50%; background: var(--accent-soft2); color: var(--accent); font-size: 9px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.task-assignee-avatar { width: 16px; height: 16px; border-radius: 50%; background: var(--gold-soft2); color: var(--gold); font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
 .task-timer-badge { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text3); display: flex; align-items: center; gap: 3px; }
 .task-timer-badge.running { color: var(--green); }
-.task-subtask-count { font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 3px; }
-.task-note-indicator { font-size: 11px; color: var(--accent); display: flex; align-items: center; gap: 3px; }
-
+.task-subtask-count { font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 4px; }
+.task-note-indicator { font-size: 11px; color: var(--gold); display: flex; align-items: center; gap: 3px; }
 .task-actions { display: flex; align-items: center; gap: 2px; opacity: 0; transition: opacity 0.15s; flex-shrink: 0; }
 .task-row:hover .task-actions { opacity: 1; }
 .task-action-btn { width: 26px; height: 26px; border-radius: 6px; border: none; background: none; color: var(--text3); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
 .task-action-btn:hover { background: var(--surface3); color: var(--text); }
 .task-action-btn svg { width: 13px; height: 13px; }
-
-/* ── Recurring badge ── */
-.recurring-badge { font-size: 10px; color: var(--accent); display: flex; align-items: center; gap: 2px; }
-
-/* ── Hold badge ── */
+.recurring-badge { font-size: 10px; color: var(--gold); display: flex; align-items: center; gap: 2px; }
 .hold-badge { font-size: 10px; color: var(--amber); background: var(--amber-soft); padding: 2px 7px; border-radius: 99px; }
-
-/* ── Modal ── */
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); display: flex; align-items: center; justify-content: center; z-index: 999; padding: 20px; }
+.progress-bar { width: 44px; height: 4px; background: var(--surface3); border-radius: 99px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--green); border-radius: 99px; transition: width 0.3s; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.72); display: flex; align-items: center; justify-content: center; z-index: 999; padding: 20px; }
 .modal { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius-lg); width: 100%; max-width: 580px; max-height: 88vh; display: flex; flex-direction: column; box-shadow: var(--shadow); }
+.modal-sm { max-width: 400px; }
 .modal-header { padding: 18px 20px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
-.modal-title { font-size: 15px; font-weight: 600; flex: 1; }
+.modal-title { font-size: 15px; font-weight: 600; flex: 1; color: var(--text); }
 .modal-body { flex: 1; overflow-y: auto; padding: 18px 20px; display: flex; flex-direction: column; gap: 16px; }
 .modal-footer { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; gap: 8px; justify-content: flex-end; }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-label { font-size: 12px; font-weight: 500; color: var(--text2); }
-.form-input, .form-select, .form-textarea { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; color: var(--text); font-family: inherit; font-size: 13px; outline: none; transition: border-color 0.15s; width: 100%; }
-.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
+.form-label { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+.form-input, .form-select { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; color: var(--text); font-family: inherit; font-size: 13px; outline: none; transition: border-color 0.15s; width: 100%; }
+.form-input:focus, .form-select:focus { border-color: var(--gold); }
 .form-select option { background: var(--surface2); }
-.form-textarea { resize: vertical; min-height: 80px; }
 .form-row { display: flex; gap: 10px; }
 .form-row .form-group { flex: 1; }
-
-/* ── Rich text toolbar ── */
-.rte-toolbar { display: flex; gap: 4px; padding: 6px 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px 8px 0 0; border-bottom: none; }
-.rte-btn { padding: 4px 8px; border-radius: 5px; border: none; background: none; color: var(--text2); cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 500; transition: all 0.12s; }
-.rte-btn:hover { background: var(--surface3); color: var(--text); }
-.rte-content { background: var(--surface2); border: 1px solid var(--border); border-radius: 0 0 8px 8px; padding: 8px 12px; min-height: 80px; color: var(--text); font-size: 13px; outline: none; line-height: 1.6; }
-.rte-content:focus { border-color: var(--accent); }
-
-/* ── Subtask list in modal ── */
+.rte-wrap { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.rte-toolbar { display: flex; gap: 2px; padding: 6px 8px; background: var(--surface3); border-bottom: 1px solid var(--border); }
+.rte-btn { padding: 4px 9px; border-radius: 5px; border: none; background: none; color: var(--text2); cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 600; transition: all 0.12s; line-height: 1.4; }
+.rte-btn:hover { background: var(--surface2); color: var(--text); }
+.rte-content { background: var(--surface2); padding: 10px 12px; min-height: 90px; color: var(--text); font-size: 13px; outline: none; line-height: 1.65; }
+.rte-content ul, .rte-content ol { padding-left: 20px; }
 .subtask-list { display: flex; flex-direction: column; gap: 4px; }
 .subtask-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px; background: var(--surface2); border-radius: 7px; }
 .subtask-check { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--border2); flex-shrink: 0; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
@@ -190,115 +169,90 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .subtask-check.done svg { display: block; }
 .subtask-text { flex: 1; font-size: 12.5px; color: var(--text); }
 .subtask-text.done { text-decoration: line-through; color: var(--text3); }
-.subtask-del { color: var(--text3); border: none; background: none; cursor: pointer; padding: 2px; }
+.subtask-del { color: var(--text3); border: none; background: none; cursor: pointer; padding: 2px; line-height: 0; border-radius: 4px; }
 .subtask-del:hover { color: var(--red); }
+.subtask-del svg { width: 12px; height: 12px; }
 .subtask-add-row { display: flex; gap: 6px; margin-top: 4px; }
-.subtask-input { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 6px 10px; color: var(--text); font-family: inherit; font-size: 12.5px; outline: none; }
-.subtask-input:focus { border-color: var(--accent); }
-
-/* ── Audit log ── */
-.audit-list { display: flex; flex-direction: column; gap: 0; }
+.subtask-input { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 7px 10px; color: var(--text); font-family: inherit; font-size: 12.5px; outline: none; }
+.subtask-input:focus { border-color: var(--gold); }
+.audit-list { display: flex; flex-direction: column; }
 .audit-item { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
 .audit-item:last-child { border-bottom: none; }
-.audit-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 4px; }
+.audit-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 4px; }
 .audit-text { color: var(--text2); flex: 1; }
 .audit-time { color: var(--text3); white-space: nowrap; font-size: 11px; }
-
-/* ── Timer modal ── */
-.timer-display { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--text); text-align: center; padding: 20px 0; }
-.timer-controls { display: flex; justify-content: center; gap: 10px; }
-
-/* ── Calendar ── */
+.detail-section { display: flex; flex-direction: column; gap: 6px; }
+.detail-label { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; }
+.detail-value { font-size: 13px; color: var(--text); }
+.detail-notes { font-size: 13px; color: var(--text); line-height: 1.65; background: var(--surface2); border-radius: 8px; padding: 10px 12px; }
+.detail-notes ul, .detail-notes ol { padding-left: 20px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.detail-subtask-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; color: var(--text2); }
+.detail-subtask-item:last-child { border-bottom: none; }
+.detail-subtask-done { color: var(--text3); text-decoration: line-through; }
+.timer-display { font-family: 'DM Mono', monospace; font-size: 40px; font-weight: 500; color: var(--gold); text-align: center; padding: 24px 0 16px; letter-spacing: 0.04em; }
 .calendar-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px; }
 .cal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.cal-title { font-size: 15px; font-weight: 600; flex: 1; }
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
-.cal-day-name { text-align: center; font-size: 11px; font-weight: 600; color: var(--text3); padding: 4px 0; }
-.cal-cell { aspect-ratio: 1; border-radius: 7px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; color: var(--text2); cursor: pointer; transition: background 0.12s; position: relative; padding: 2px; }
+.cal-title { font-size: 15px; font-weight: 600; flex: 1; color: var(--text); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.cal-day-name { text-align: center; font-size: 10px; font-weight: 700; color: var(--text3); padding: 5px 0; letter-spacing: 0.05em; text-transform: uppercase; }
+.cal-cell { aspect-ratio: 1; border-radius: 7px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; color: var(--text2); cursor: pointer; transition: background 0.12s; position: relative; }
 .cal-cell:hover { background: var(--surface3); }
 .cal-cell.today { background: var(--accent-soft2); color: var(--accent); font-weight: 600; }
-.cal-cell.other-month { color: var(--text3); opacity: 0.4; }
-.cal-cell.has-tasks::after { content: ''; position: absolute; bottom: 4px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
-.cal-cell.selected { outline: 2px solid var(--accent); }
-
-/* ── Dashboard charts ── */
+.cal-cell.other-month { color: var(--text3); opacity: 0.3; }
+.cal-cell.has-tasks::after { content: ''; position: absolute; bottom: 4px; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+.cal-cell.selected { outline: 2px solid var(--gold); outline-offset: -2px; }
 .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px; }
-.chart-title { font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
-.bar-chart { display: flex; flex-direction: column; gap: 8px; }
+.chart-title { font-size: 10px; font-weight: 700; color: var(--text3); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.09em; }
+.bar-chart { display: flex; flex-direction: column; gap: 9px; }
 .bar-row { display: flex; align-items: center; gap: 8px; }
-.bar-label { font-size: 11px; color: var(--text2); width: 60px; flex-shrink: 0; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.bar-label { font-size: 11px; color: var(--text2); width: 60px; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bar-track { flex: 1; height: 6px; background: var(--surface3); border-radius: 99px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 99px; transition: width 0.5s; }
+.bar-fill { height: 100%; border-radius: 99px; transition: width 0.6s cubic-bezier(.4,0,.2,1); }
 .bar-val { font-size: 11px; color: var(--text3); width: 20px; text-align: right; flex-shrink: 0; font-family: 'DM Mono', monospace; }
 .donut-wrap { display: flex; align-items: center; gap: 16px; }
-.donut-legend { display: flex; flex-direction: column; gap: 6px; }
+.donut-legend { display: flex; flex-direction: column; gap: 7px; }
 .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--text2); }
 .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-
-/* ── Tag colors ── */
 .tag-blue { background: var(--blue-soft); color: var(--blue); }
 .tag-green { background: var(--green-soft); color: var(--green); }
 .tag-amber { background: var(--amber-soft); color: var(--amber); }
 .tag-red { background: var(--red-soft); color: var(--red); }
-.tag-purple { background: var(--accent-soft2); color: var(--accent); }
-
-/* ── Empty state ── */
-.empty-state { text-align: center; padding: 48px 20px; color: var(--text3); }
-.empty-state svg { width: 40px; height: 40px; margin: 0 auto 12px; display: block; opacity: 0.4; }
+.tag-gold { background: var(--gold-soft2); color: var(--gold); }
+.empty-state { text-align: center; padding: 52px 20px; color: var(--text3); }
+.empty-state svg { width: 40px; height: 40px; margin: 0 auto 12px; display: block; opacity: 0.35; }
 .empty-state p { font-size: 13px; }
-
-/* ── Toast ── */
 .toast-container { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px; z-index: 9999; }
 .toast { background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px; padding: 10px 16px; font-size: 13px; color: var(--text); box-shadow: var(--shadow); animation: slideIn 0.25s ease; max-width: 280px; }
-@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes slideIn { from { transform: translateX(110%); opacity: 0; } to { transform: none; opacity: 1; } }
 .toast.success { border-left: 3px solid var(--green); }
-.toast.info { border-left: 3px solid var(--accent); }
-
-/* ── Progress bar for subtasks ── */
-.subtask-progress { display: flex; align-items: center; gap: 6px; }
-.progress-bar { flex: 1; height: 4px; background: var(--surface3); border-radius: 99px; overflow: hidden; max-width: 60px; }
-.progress-fill { height: 100%; background: var(--green); border-radius: 99px; transition: width 0.3s; }
-
-/* ── Misc ── */
+.toast.info { border-left: 3px solid var(--gold); }
+.toast.error { border-left: 3px solid var(--red); }
 .hidden { display: none !important; }
 .divider { height: 1px; background: var(--border); margin: 4px 0; }
-.flex-center { display: flex; align-items: center; justify-content: center; }
-.gap-8 { gap: 8px; }
-.text-muted { color: var(--text3); }
-.font-mono { font-family: 'DM Mono', monospace; }
-.spin { animation: spin 1s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
-
-<div id="app" class="app">
-  <!-- Sidebar -->
+<div class="app">
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <div class="logo-mark">
-        <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
-      </div>
+      <div class="logo-mark"><svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="2"><path d="M2 4h12M2 8h8M2 12h10"/></svg></div>
       <span class="logo-text">TaskFlow</span>
     </div>
-
     <div class="sidebar-section">
       <div class="sidebar-label">Views</div>
       <button class="nav-item active" onclick="switchView('tasks')" data-view="tasks">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8l2 2 4-4"/></svg>
-        All Tasks
-        <span class="nav-badge" id="badge-tasks">0</span>
+        All Tasks <span class="nav-badge" id="badge-tasks">0</span>
       </button>
       <button class="nav-item" onclick="switchView('today')" data-view="today">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 2v2M11 2v2M2 7h12"/></svg>
-        Due Today
-        <span class="nav-badge" id="badge-today">0</span>
+        Due Today <span class="nav-badge" id="badge-today">0</span>
       </button>
       <button class="nav-item" onclick="switchView('overdue')" data-view="overdue">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 2"/></svg>
-        Overdue
-        <span class="nav-badge overdue hidden" id="badge-overdue">0</span>
+        Overdue <span class="nav-badge overdue hidden" id="badge-overdue">0</span>
       </button>
       <button class="nav-item" onclick="switchView('calendar')" data-view="calendar">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 2v2M11 2v2M2 7h12"/><circle cx="6" cy="11" r="1" fill="currentColor"/><circle cx="10" cy="11" r="1" fill="currentColor"/></svg>
@@ -313,25 +267,17 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         Archived
       </button>
     </div>
-
-    <div class="divider" style="margin: 6px 10px;"></div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-label">Tags</div>
-    </div>
+    <div class="divider" style="margin:6px 10px;"></div>
+    <div class="sidebar-section"><div class="sidebar-label">Tags</div></div>
     <div class="sidebar-tags" id="sidebar-tags"></div>
-
-    <div style="margin-top: auto; padding: 10px;">
+    <div style="margin-top:auto;padding:10px;">
       <button class="nav-item" onclick="openTagModal()">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>
         Add tag
       </button>
     </div>
   </aside>
-
-  <!-- Main -->
   <div class="main">
-    <!-- Topbar -->
     <div class="topbar">
       <span class="page-title" id="page-title">All Tasks</span>
       <div class="search-wrap">
@@ -345,13 +291,9 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         </button>
       </div>
     </div>
-
-    <!-- Content -->
     <div class="content" id="main-content"></div>
   </div>
 </div>
-
-<!-- Toast -->
 <div class="toast-container" id="toast-container"></div>
 
 <!-- Task Modal -->
@@ -359,23 +301,18 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   <div class="modal">
     <div class="modal-header">
       <span class="modal-title" id="modal-title-text">New Task</span>
-      <button class="btn btn-ghost btn-icon" onclick="closeModal('task-modal')">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg>
-      </button>
+      <button class="btn btn-ghost btn-icon" onclick="closeModal('task-modal')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
     </div>
     <div class="modal-body">
       <div class="form-group">
-        <label class="form-label">Task title *</label>
+        <label class="form-label">Title *</label>
         <input class="form-input" id="task-title-input" placeholder="What needs to be done?">
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Priority</label>
           <select class="form-select" id="task-priority-input">
-            <option value="">No priority</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
+            <option value="">None</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option>
           </select>
         </div>
         <div class="form-group">
@@ -386,9 +323,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Tag</label>
-          <select class="form-select" id="task-tag-input">
-            <option value="">No tag</option>
-          </select>
+          <select class="form-select" id="task-tag-input"><option value="">No tag</option></select>
         </div>
         <div class="form-group">
           <label class="form-label">Assignee</label>
@@ -399,39 +334,37 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <div class="form-group">
           <label class="form-label">Recurring</label>
           <select class="form-select" id="task-recurring-input">
-            <option value="">Not recurring</option>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
+            <option value="">Not recurring</option><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option>
           </select>
         </div>
         <div class="form-group">
           <label class="form-label">Status</label>
-          <select class="form-select" id="task-status-input">
-            <option value="active">Active</option>
-            <option value="hold">On hold</option>
+          <select class="form-select" id="task-status-input" onchange="toggleHoldReason(this.value)">
+            <option value="active">Active</option><option value="hold">On hold</option>
           </select>
         </div>
       </div>
-      <div class="form-group" id="hold-reason-group" style="display:none;">
+      <div class="form-group hidden" id="hold-reason-group">
         <label class="form-label">Hold reason (optional)</label>
         <input class="form-input" id="task-hold-reason" placeholder="Why is this on hold?">
       </div>
       <div class="form-group">
         <label class="form-label">Notes</label>
-        <div class="rte-toolbar">
-          <button class="rte-btn" onclick="rteCmd('bold')"><b>B</b></button>
-          <button class="rte-btn" onclick="rteCmd('italic')"><i>I</i></button>
-          <button class="rte-btn" onclick="rteCmd('insertUnorderedList')">• List</button>
-          <button class="rte-btn" onclick="rteCmd('insertOrderedList')">1. List</button>
+        <div class="rte-wrap">
+          <div class="rte-toolbar">
+            <button class="rte-btn" onmousedown="event.preventDefault();rteCmd('bold')"><b>B</b></button>
+            <button class="rte-btn" onmousedown="event.preventDefault();rteCmd('italic')"><i>I</i></button>
+            <button class="rte-btn" onmousedown="event.preventDefault();rteCmd('insertUnorderedList')">• List</button>
+            <button class="rte-btn" onmousedown="event.preventDefault();rteCmd('insertOrderedList')">1. List</button>
+          </div>
+          <div class="rte-content" id="task-notes-input" contenteditable="true"></div>
         </div>
-        <div class="rte-content" id="task-notes-input" contenteditable="true"></div>
       </div>
       <div class="form-group">
         <label class="form-label">Subtasks</label>
         <div class="subtask-list" id="modal-subtask-list"></div>
         <div class="subtask-add-row">
-          <input class="subtask-input" id="new-subtask-input" placeholder="Add a subtask…" onkeydown="if(event.key==='Enter')addSubtaskFromModal()">
+          <input class="subtask-input" id="new-subtask-input" placeholder="Add a subtask… press Enter" onkeydown="if(event.key==='Enter'){event.preventDefault();addSubtaskFromModal();}">
           <button class="btn btn-ghost" onclick="addSubtaskFromModal()">Add</button>
         </div>
       </div>
@@ -443,34 +376,44 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   </div>
 </div>
 
+<!-- Detail Modal -->
+<div class="modal-overlay hidden" id="detail-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="detail-title"></span>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button class="btn btn-ghost" style="font-size:12px;padding:5px 12px;" id="detail-edit-btn">Edit</button>
+        <button class="btn btn-ghost btn-icon" onclick="closeModal('detail-modal')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+      </div>
+    </div>
+    <div class="modal-body" id="detail-body"></div>
+  </div>
+</div>
+
 <!-- Timer Modal -->
 <div class="modal-overlay hidden" id="timer-modal">
-  <div class="modal" style="max-width:360px;">
+  <div class="modal modal-sm">
     <div class="modal-header">
       <span class="modal-title">Timer</span>
-      <button class="btn btn-ghost btn-icon" onclick="stopAndCloseTimer()">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg>
-      </button>
+      <button class="btn btn-ghost btn-icon" onclick="stopAndCloseTimer()"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
     </div>
-    <div class="modal-body">
-      <div id="timer-task-name" style="font-size:13px;color:var(--text2);text-align:center;margin-bottom:4px;"></div>
+    <div class="modal-body" style="align-items:center;">
+      <div id="timer-task-name" style="font-size:13px;color:var(--text2);text-align:center;"></div>
       <div class="timer-display" id="timer-display">00:00:00</div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="stopAndCloseTimer()">Stop &amp; save</button>
-      <button class="btn btn-primary" id="timer-toggle-btn" onclick="toggleTimer()">Start</button>
+      <button class="btn btn-gold" id="timer-toggle-btn" onclick="toggleTimer()">Start</button>
     </div>
   </div>
 </div>
 
-<!-- Tag modal -->
+<!-- Tag Modal -->
 <div class="modal-overlay hidden" id="tag-modal">
-  <div class="modal" style="max-width:360px;">
+  <div class="modal modal-sm">
     <div class="modal-header">
       <span class="modal-title">New Tag</span>
-      <button class="btn btn-ghost btn-icon" onclick="closeModal('tag-modal')">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg>
-      </button>
+      <button class="btn btn-ghost btn-icon" onclick="closeModal('tag-modal')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
     </div>
     <div class="modal-body">
       <div class="form-group">
@@ -480,11 +423,11 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
       <div class="form-group">
         <label class="form-label">Colour</label>
         <div style="display:flex;gap:8px;flex-wrap:wrap;" id="tag-color-picker">
-          <button class="btn btn-ghost" style="background:var(--blue-soft);color:var(--blue);border-color:transparent;" onclick="selectTagColor('blue')">Blue</button>
-          <button class="btn btn-ghost" style="background:var(--green-soft);color:var(--green);border-color:transparent;" onclick="selectTagColor('green')">Green</button>
-          <button class="btn btn-ghost" style="background:var(--amber-soft);color:var(--amber);border-color:transparent;" onclick="selectTagColor('amber')">Amber</button>
-          <button class="btn btn-ghost" style="background:var(--red-soft);color:var(--red);border-color:transparent;" onclick="selectTagColor('red')">Red</button>
-          <button class="btn btn-ghost" style="background:var(--accent-soft2);color:var(--accent);border-color:transparent;" onclick="selectTagColor('purple')">Purple</button>
+          <button class="btn" style="background:var(--blue-soft);color:var(--blue);border:2px solid transparent;" onclick="selectTagColor('blue',this)">Blue</button>
+          <button class="btn" style="background:var(--green-soft);color:var(--green);border:2px solid transparent;" onclick="selectTagColor('green',this)">Green</button>
+          <button class="btn" style="background:var(--amber-soft);color:var(--amber);border:2px solid transparent;" onclick="selectTagColor('amber',this)">Amber</button>
+          <button class="btn" style="background:var(--red-soft);color:var(--red);border:2px solid transparent;" onclick="selectTagColor('red',this)">Red</button>
+          <button class="btn" style="background:var(--gold-soft2);color:var(--gold);border:2px solid transparent;" onclick="selectTagColor('gold',this)">Gold</button>
         </div>
       </div>
     </div>
@@ -496,728 +439,540 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 </div>
 
 <script>
-// ── State ──────────────────────────────────────────────────────────────────
 let state = {
-  tasks: [],
-  tags: [
-    { id: 'tag1', name: 'Design', color: 'blue' },
-    { id: 'tag2', name: 'Dev', color: 'green' },
-    { id: 'tag3', name: 'Marketing', color: 'amber' },
+  tasks: [], tags: [
+    { id:'tag1', name:'Design', color:'blue' },
+    { id:'tag2', name:'Dev', color:'green' },
+    { id:'tag3', name:'Marketing', color:'amber' },
   ],
-  view: 'tasks',
-  selectedTagFilter: null,
-  editingTaskId: null,
-  timerTaskId: null,
-  timerStart: null,
-  timerElapsed: 0,
-  timerInterval: null,
-  timerRunning: false,
-  calendarDate: new Date(),
-  newTagColor: 'blue',
-  editingSubtasks: [],
+  view: 'tasks', selectedTagFilter: null,
+  editingTaskId: null, editingSubtasks: [],
+  timerTaskId: null, timerStart: null, timerElapsed: 0,
+  timerInterval: null, timerRunning: false,
+  calendarDate: new Date(), newTagColor: 'blue',
 };
 
 function loadState() {
-  try {
-    const s = localStorage.getItem('taskflow_v2');
-    if (s) {
-      const parsed = JSON.parse(s);
-      state.tasks = parsed.tasks || [];
-      state.tags = parsed.tags || state.tags;
-    }
-  } catch(e) {}
+  try { const s = localStorage.getItem('taskflow_v3'); if (s) { const p = JSON.parse(s); state.tasks = p.tasks||[]; state.tags = p.tags||state.tags; } } catch(e) {}
 }
 function saveState() {
-  try { localStorage.setItem('taskflow_v2', JSON.stringify({ tasks: state.tasks, tags: state.tags })); } catch(e) {}
+  try { localStorage.setItem('taskflow_v3', JSON.stringify({ tasks: state.tasks, tags: state.tags })); } catch(e) {}
 }
-
-function genId() { return 'id_' + Math.random().toString(36).slice(2, 9); }
-function today() { return new Date().toISOString().slice(0, 10); }
+function genId() { return 'id_'+Math.random().toString(36).slice(2,9); }
+function todayStr() { return new Date().toISOString().slice(0,10); }
 function fmtDate(d) {
-  if (!d) return '';
-  const dt = new Date(d + 'T00:00:00');
-  return dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+  if (!d) return '—';
+  return new Date(d+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 }
-function isOverdue(d) { return d && d < today(); }
-function isDueToday(d) { return d === today(); }
+function isOverdue(d) { return d && d < todayStr(); }
+function isDueToday(d) { return d === todayStr(); }
+function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-// ── View ──────────────────────────────────────────────────────────────────
 function switchView(v) {
-  state.view = v;
-  state.selectedTagFilter = null;
-  document.querySelectorAll('.nav-item[data-view]').forEach(el => el.classList.toggle('active', el.dataset.view === v));
+  state.view=v; state.selectedTagFilter=null;
+  document.querySelectorAll('.nav-item[data-view]').forEach(el => el.classList.toggle('active', el.dataset.view===v));
   document.querySelectorAll('.tag-item').forEach(el => el.classList.remove('active'));
-  const titles = { tasks: 'All Tasks', today: 'Due Today', overdue: 'Overdue', calendar: 'Calendar', dashboard: 'Dashboard', archived: 'Archived' };
-  document.getElementById('page-title').textContent = titles[v] || v;
+  const T={tasks:'All Tasks',today:'Due Today',overdue:'Overdue',calendar:'Calendar',dashboard:'Dashboard',archived:'Archived'};
+  document.getElementById('page-title').textContent = T[v]||v;
   renderContent();
 }
-
 function switchTagFilter(tagId) {
-  state.view = 'tasks';
-  state.selectedTagFilter = tagId;
+  state.view='tasks'; state.selectedTagFilter=tagId;
   document.querySelectorAll('.nav-item[data-view]').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tag-item').forEach(el => el.classList.toggle('active', el.dataset.tag === tagId));
-  const tag = state.tags.find(t => t.id === tagId);
-  document.getElementById('page-title').textContent = tag ? tag.name : 'Tasks';
+  document.querySelectorAll('.tag-item').forEach(el => el.classList.toggle('active', el.dataset.tag===tagId));
+  const tag=state.tags.find(t=>t.id===tagId);
+  document.getElementById('page-title').textContent = tag?tag.name:'Tasks';
   renderContent();
 }
 
-// ── Render ────────────────────────────────────────────────────────────────
 function renderContent() {
-  updateBadges();
-  renderSidebarTags();
+  updateBadges(); renderSidebarTags();
   const el = document.getElementById('main-content');
-  if (state.view === 'calendar') { renderCalendar(el); return; }
-  if (state.view === 'dashboard') { renderDashboard(el); return; }
+  if (state.view==='calendar') { renderCalendar(el); return; }
+  if (state.view==='dashboard') { renderDashboard(el); return; }
   renderTasks(el);
 }
 
-function getFilteredTasks(forView) {
-  const v = forView || state.view;
-  const q = document.getElementById('search-input')?.value.toLowerCase() || '';
+function getFilteredTasks() {
+  const v=state.view;
+  const q=(document.getElementById('search-input')?.value||'').toLowerCase();
   let tasks = state.tasks.filter(t => {
-    if (v === 'archived') return t.status === 'completed';
-    if (v === 'today') return !t.archived && t.status !== 'completed' && isDueToday(t.due);
-    if (v === 'overdue') return !t.archived && t.status !== 'completed' && isOverdue(t.due);
-    if (state.selectedTagFilter) return !t.archived && t.status !== 'completed' && t.tagId === state.selectedTagFilter;
-    return !t.archived && t.status !== 'completed';
+    if (v==='archived') return t.status==='completed';
+    if (v==='today') return t.status!=='completed' && isDueToday(t.due);
+    if (v==='overdue') return t.status!=='completed' && isOverdue(t.due);
+    if (state.selectedTagFilter) return t.status!=='completed' && t.tagId===state.selectedTagFilter;
+    return t.status!=='completed';
   });
-  if (q) tasks = tasks.filter(t => t.title.toLowerCase().includes(q) || (t.assignee||'').toLowerCase().includes(q));
+  if (q) tasks=tasks.filter(t => t.title.toLowerCase().includes(q)||(t.assignee||'').toLowerCase().includes(q));
   return tasks;
 }
 
-function renderTasks(container) {
-  const el = container || document.getElementById('main-content');
+function renderTasks(el) {
+  if (!el) el = document.getElementById('main-content');
   const tasks = getFilteredTasks();
   const html = [];
 
-  // Stats row (not archived)
-  if (state.view !== 'archived' && state.view !== 'today' && state.view !== 'overdue' && !state.selectedTagFilter) {
-    const active = state.tasks.filter(t => t.status === 'active' && t.status !== 'completed').length;
-    const done = state.tasks.filter(t => t.status === 'completed').length;
-    const onhold = state.tasks.filter(t => t.status === 'hold').length;
-    const overdue = state.tasks.filter(t => isOverdue(t.due) && t.status !== 'completed').length;
+  if (state.view==='tasks' && !state.selectedTagFilter) {
+    const ac=state.tasks.filter(t=>t.status==='active').length;
+    const dn=state.tasks.filter(t=>t.status==='completed').length;
+    const hl=state.tasks.filter(t=>t.status==='hold').length;
+    const ov=state.tasks.filter(t=>isOverdue(t.due)&&t.status!=='completed').length;
     html.push(`<div class="stats-row">
-      <div class="stat-card"><div class="stat-label">Active</div><div class="stat-value accent">${active}</div></div>
-      <div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value green">${done}</div></div>
-      <div class="stat-card"><div class="stat-label">On Hold</div><div class="stat-value amber">${onhold}</div></div>
-      <div class="stat-card"><div class="stat-label">Overdue</div><div class="stat-value ${overdue>0?'red':'text-muted'}">${overdue}</div></div>
+      <div class="stat-card"><div class="stat-label">Active</div><div class="stat-value c-gold">${ac}</div></div>
+      <div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value c-green">${dn}</div></div>
+      <div class="stat-card"><div class="stat-label">On Hold</div><div class="stat-value c-amber">${hl}</div></div>
+      <div class="stat-card"><div class="stat-label">Overdue</div><div class="stat-value ${ov>0?'c-red':''}">${ov}</div></div>
     </div>`);
   }
-
-  // Quick add bar
   html.push(`<div class="quick-add-bar">
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="var(--text3)" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg>
-    <input class="quick-input" id="quick-input" placeholder="Quick add task — press Enter" onkeydown="if(event.key==='Enter')quickAddTask()">
+    <input class="quick-input" id="quick-input" placeholder="Quick add task — press Enter to save" onkeydown="if(event.key==='Enter')quickAddTask()">
   </div>`);
 
-  if (tasks.length === 0) {
-    html.push(`<div class="empty-state">
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="8" width="24" height="24" rx="4"/><path d="M14 20h12M14 26h8M16 14h8"/></svg>
-      <p>No tasks here. Add one above.</p>
-    </div>`);
-    el.innerHTML = html.join('');
-    return;
+  if (!tasks.length) {
+    html.push(`<div class="empty-state"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="8" width="24" height="24" rx="3"/><path d="M14 20h12M14 26h8"/></svg><p>No tasks here.</p></div>`);
+    el.innerHTML=html.join(''); return;
   }
 
-  // Group by priority
-  const groups = [
-    { key: 'high', label: 'High Priority', tasks: tasks.filter(t => t.priority === 'high') },
-    { key: 'medium', label: 'Medium Priority', tasks: tasks.filter(t => t.priority === 'medium') },
-    { key: 'low', label: 'Low Priority', tasks: tasks.filter(t => t.priority === 'low') },
-    { key: 'none', label: 'No Priority', tasks: tasks.filter(t => !t.priority) },
-  ].filter(g => g.tasks.length > 0);
+  const groups=[
+    {key:'high',label:'High Priority',tasks:tasks.filter(t=>t.priority==='high')},
+    {key:'medium',label:'Medium Priority',tasks:tasks.filter(t=>t.priority==='medium')},
+    {key:'low',label:'Low Priority',tasks:tasks.filter(t=>t.priority==='low')},
+    {key:'none',label:'No Priority',tasks:tasks.filter(t=>!t.priority)},
+  ].filter(g=>g.tasks.length);
 
-  groups.forEach(group => {
+  groups.forEach(g => {
     html.push(`<div class="task-group">
-      <div class="task-group-header" onclick="toggleGroup('${group.key}')">
-        <svg class="task-group-chevron" id="chev-${group.key}" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg>
-        <span class="task-group-title">${group.label}</span>
-        <span class="task-group-count">${group.tasks.length}</span>
+      <div class="task-group-header" onclick="toggleGroup('${g.key}')">
+        <svg class="task-group-chevron" id="chev-${g.key}" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg>
+        <span class="task-group-title">${g.label}</span>
+        <span class="task-group-count">${g.tasks.length}</span>
         <div class="task-group-line"></div>
       </div>
-      <div class="tasks-container" id="group-${group.key}">`);
-    group.tasks.forEach(t => html.push(renderTaskRow(t)));
-    html.push(`</div></div>`);
+      <div class="tasks-container" id="group-${g.key}">${g.tasks.map(t=>renderTaskRow(t)).join('')}</div>
+    </div>`);
   });
 
-  el.innerHTML = html.join('');
+  el.innerHTML=html.join('');
   setupDragAndDrop();
 }
 
 function renderTaskRow(t) {
-  const tag = state.tags.find(tg => tg.id === t.tagId);
-  const overdueFlag = isOverdue(t.due) && t.status !== 'completed';
-  const todayFlag = isDueToday(t.due) && t.status !== 'completed';
-  const totalSub = (t.subtasks||[]).length;
-  const doneSub = (t.subtasks||[]).filter(s => s.done).length;
-  const timerSecs = (t.timerSessions||[]).reduce((a,s) => a + s.duration, 0) + (state.timerTaskId === t.id && state.timerRunning ? Math.floor((Date.now() - state.timerStart)/1000) : 0);
-  const timerStr = timerSecs > 0 ? formatSeconds(timerSecs) : '';
-  const isTimerRunning = state.timerTaskId === t.id && state.timerRunning;
-
-  return `<div class="task-row ${t.status === 'completed' ? 'completed' : ''} ${t.status === 'hold' ? 'on-hold' : ''}" 
-    data-id="${t.id}" draggable="true" 
+  const tag=state.tags.find(tg=>tg.id===t.tagId);
+  const ov=isOverdue(t.due)&&t.status!=='completed';
+  const td=isDueToday(t.due)&&t.status!=='completed';
+  const totalSub=(t.subtasks||[]).length;
+  const doneSub=(t.subtasks||[]).filter(s=>s.done).length;
+  const timerSecs=(t.timerSessions||[]).reduce((a,s)=>a+s.duration,0)+(state.timerTaskId===t.id&&state.timerRunning?Math.floor((Date.now()-state.timerStart)/1000):0);
+  const isRun=state.timerTaskId===t.id&&state.timerRunning;
+  return `<div class="task-row ${t.status==='completed'?'completed':''} ${t.status==='hold'?'on-hold':''}"
+    data-id="${t.id}" draggable="true"
     ondragstart="dragStart(event,'${t.id}')" ondragover="dragOver(event)" ondrop="dropTask(event,'${t.id}')" ondragleave="dragLeave(event)">
-    <div class="task-check ${t.status==='completed'?'done':''}" onclick="toggleComplete('${t.id}')">
+    <div class="task-check ${t.status==='completed'?'done':''}" onclick="event.stopPropagation();toggleComplete('${t.id}')">
       <svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg>
     </div>
-    <div class="task-body">
+    <div class="task-body" onclick="openDetailModal('${t.id}')">
       <div class="task-title">${escHtml(t.title)}</div>
       <div class="task-meta">
-        ${t.priority ? `<span class="task-priority priority-${t.priority}">${t.priority}</span>` : ''}
-        ${tag ? `<span class="task-tag tag-${tag.color}">${escHtml(tag.name)}</span>` : ''}
-        ${t.due ? `<span class="task-due ${overdueFlag?'overdue':''} ${todayFlag?'today':''}">
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="10" height="9" rx="1"/><path d="M4 1v2M8 1v2M1 5.5h10"/></svg>
-          ${overdueFlag ? 'Overdue · ' : todayFlag ? 'Today · ' : ''}${fmtDate(t.due)}</span>` : ''}
-        ${t.assignee ? `<span class="task-assignee"><span class="task-assignee-avatar">${t.assignee[0].toUpperCase()}</span>${escHtml(t.assignee)}</span>` : ''}
-        ${totalSub > 0 ? `<span class="task-subtask-count">
-          <div class="subtask-progress"><div class="progress-bar"><div class="progress-fill" style="width:${Math.round(doneSub/totalSub*100)}%"></div></div></div>
-          ${doneSub}/${totalSub}
-        </span>` : ''}
-        ${timerStr ? `<span class="task-timer-badge ${isTimerRunning?'running':''}">
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="7" r="4"/><path d="M6 5v2.5l1.5 1.5"/><path d="M4 1h4"/></svg>
-          ${timerStr}</span>` : ''}
-        ${t.recurring ? `<span class="recurring-badge">
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 5a4 4 0 1 0-.5 2M10 2v3h-3"/></svg>
-          ${t.recurring}</span>` : ''}
-        ${t.status === 'hold' ? `<span class="hold-badge">On hold${t.holdReason ? ': ' + escHtml(t.holdReason) : ''}</span>` : ''}
-        ${(t.notes && t.notes.trim()) ? `<span class="task-note-indicator">
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="10" height="10" rx="1.5"/><path d="M3 4h6M3 7h4"/></svg>
-          Note</span>` : ''}
+        ${t.priority?`<span class="task-priority priority-${t.priority}">${t.priority}</span>`:''}
+        ${tag?`<span class="task-tag tag-${tag.color}">${escHtml(tag.name)}</span>`:''}
+        ${t.due?`<span class="task-due ${ov?'overdue':td?'duetoday':''}"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="10" height="9" rx="1"/><path d="M4 1v2M8 1v2M1 5.5h10"/></svg>${ov?'Overdue · ':td?'Today · ':''}${fmtDate(t.due)}</span>`:''}
+        ${t.assignee?`<span class="task-assignee"><span class="task-assignee-avatar">${t.assignee[0].toUpperCase()}</span>${escHtml(t.assignee)}</span>`:''}
+        ${totalSub>0?`<span class="task-subtask-count"><div class="progress-bar"><div class="progress-fill" style="width:${Math.round(doneSub/totalSub*100)}%"></div></div>${doneSub}/${totalSub}</span>`:''}
+        ${timerSecs>0?`<span class="task-timer-badge ${isRun?'running':''}"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="7" r="4"/><path d="M6 5v2.5l1.5 1.5"/><path d="M4 1h4"/></svg>${formatSeconds(timerSecs)}</span>`:''}
+        ${t.recurring?`<span class="recurring-badge"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 5a4 4 0 1 0-.5 2M10 2v3h-3"/></svg>${t.recurring}</span>`:''}
+        ${t.status==='hold'?`<span class="hold-badge">On hold${t.holdReason?': '+escHtml(t.holdReason):''}</span>`:''}
+        ${t.notes&&t.notes.trim()?`<span class="task-note-indicator"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="10" height="10" rx="1.5"/><path d="M3 4h6M3 7h4"/></svg>Note</span>`:''}
       </div>
     </div>
     <div class="task-actions">
-      <button class="task-action-btn" title="Timer" onclick="openTimer('${t.id}')">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="9" r="5"/><path d="M8 6.5V9l2 2"/><path d="M5.5 2h5"/></svg>
+      <button class="task-action-btn" title="Timer" onclick="event.stopPropagation();openTimer('${t.id}')">
+        <svg viewBox="0 0 16 16" fill="none" stroke="${isRun?'var(--green)':'currentColor'}" stroke-width="1.5"><circle cx="8" cy="9" r="5"/><path d="M8 6.5V9l2 2"/><path d="M5.5 2h5"/></svg>
       </button>
-      <button class="task-action-btn" title="Edit" onclick="openEditModal('${t.id}')">
+      <button class="task-action-btn" title="Edit" onclick="event.stopPropagation();openEditModal('${t.id}')">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 14l3-1L12 6l-2-2-7 7-1 3z"/><path d="M10 4l2 2"/></svg>
       </button>
-      <button class="task-action-btn" title="${t.status==='hold'?'Remove hold':'Put on hold'}" onclick="toggleHold('${t.id}')">
+      <button class="task-action-btn" title="${t.status==='hold'?'Remove hold':'Put on hold'}" onclick="event.stopPropagation();toggleHoldStatus('${t.id}')">
         <svg viewBox="0 0 16 16" fill="none" stroke="${t.status==='hold'?'var(--amber)':'currentColor'}" stroke-width="1.5"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></svg>
       </button>
-      <button class="task-action-btn" title="Delete" onclick="deleteTask('${t.id}')">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h10M6 5V3h4v2M6 8v5M10 8v5"/><rect x="4" y="5" width="8" height="8" rx="1"/></svg>
+      <button class="task-action-btn" title="Delete" onclick="event.stopPropagation();deleteTask('${t.id}')">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h10M6 5V3h4v2"/><rect x="4" y="5" width="8" height="8" rx="1"/></svg>
       </button>
     </div>
   </div>`;
 }
 
-// ── Task CRUD ────────────────────────────────────────────────────────────
+function openDetailModal(id) {
+  const t=state.tasks.find(t=>t.id===id); if(!t) return;
+  const tag=state.tags.find(tg=>tg.id===t.tagId);
+  const totalSub=(t.subtasks||[]).length;
+  const doneSub=(t.subtasks||[]).filter(s=>s.done).length;
+  const timerTotal=(t.timerSessions||[]).reduce((a,s)=>a+s.duration,0);
+  const statusLabel = t.status==='completed'?'Completed':t.status==='hold'?`On hold${t.holdReason?' – '+t.holdReason:''}`:t.status==='active'?'Active':'—';
+  document.getElementById('detail-title').textContent=t.title;
+  document.getElementById('detail-edit-btn').onclick=()=>{ closeModal('detail-modal'); openEditModal(id); };
+  const pairs=[
+    ['Status',statusLabel],['Priority',t.priority?t.priority.charAt(0).toUpperCase()+t.priority.slice(1):'—'],
+    ['Due date',t.due?fmtDate(t.due):'—'],['Tag',tag?tag.name:'—'],
+    ['Assignee',t.assignee||'—'],['Recurring',t.recurring||'—'],
+    ['Created',fmtDate(t.createdAt?.slice(0,10))],
+    ['Time logged',timerTotal>0?formatSeconds(timerTotal):'—'],
+  ];
+  let body=`<div class="detail-grid">${pairs.map(([l,v])=>`<div class="detail-section"><div class="detail-label">${l}</div><div class="detail-value">${escHtml(v)}</div></div>`).join('')}</div>`;
+  if (t.notes&&t.notes.trim()) body+=`<div class="detail-section"><div class="detail-label">Notes</div><div class="detail-notes">${t.notes}</div></div>`;
+  if (totalSub>0) body+=`<div class="detail-section"><div class="detail-label">Subtasks (${doneSub}/${totalSub})</div>
+    ${(t.subtasks||[]).map(s=>`<div class="detail-subtask-item">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="${s.done?'var(--green)':'var(--text3)'}" stroke-width="2"><circle cx="6" cy="6" r="4.5"/>${s.done?'<path d="M3.5 6l1.5 1.5 3-3"/>':''}</svg>
+      <span class="${s.done?'detail-subtask-done':''}">${escHtml(s.text)}</span>
+    </div>`).join('')}</div>`;
+  if ((t.audit||[]).length) body+=`<div class="detail-section"><div class="detail-label">Audit trail</div>
+    <div class="audit-list">${[...t.audit].reverse().map(a=>`<div class="audit-item">
+      <div class="audit-dot"></div>
+      <span class="audit-text">${escHtml(a.text)}</span>
+      <span class="audit-time">${new Date(a.time).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</span>
+    </div>`).join('')}</div></div>`;
+  document.getElementById('detail-body').innerHTML=body;
+  document.getElementById('detail-modal').classList.remove('hidden');
+}
+
 function openAddModal() {
-  state.editingTaskId = null;
-  state.editingSubtasks = [];
-  document.getElementById('modal-title-text').textContent = 'New Task';
-  document.getElementById('task-title-input').value = '';
-  document.getElementById('task-priority-input').value = '';
-  document.getElementById('task-due-input').value = '';
-  document.getElementById('task-tag-input').value = '';
-  document.getElementById('task-assignee-input').value = '';
-  document.getElementById('task-recurring-input').value = '';
-  document.getElementById('task-status-input').value = 'active';
-  document.getElementById('task-hold-reason').value = '';
-  document.getElementById('hold-reason-group').style.display = 'none';
-  document.getElementById('task-notes-input').innerHTML = '';
-  populateTagSelect();
+  state.editingTaskId=null; state.editingSubtasks=[];
+  document.getElementById('modal-title-text').textContent='New Task';
+  ['task-title-input','task-assignee-input','task-hold-reason'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('task-priority-input').value='';
+  document.getElementById('task-due-input').value='';
+  document.getElementById('task-recurring-input').value='';
+  document.getElementById('task-status-input').value='active';
+  document.getElementById('hold-reason-group').classList.add('hidden');
+  document.getElementById('task-notes-input').innerHTML='';
+  populateTagSelect('');
   renderModalSubtasks();
   document.getElementById('task-modal').classList.remove('hidden');
+  setTimeout(()=>document.getElementById('task-title-input').focus(),80);
 }
-
 function openEditModal(id) {
-  const t = state.tasks.find(t => t.id === id);
-  if (!t) return;
-  state.editingTaskId = id;
-  state.editingSubtasks = JSON.parse(JSON.stringify(t.subtasks || []));
-  document.getElementById('modal-title-text').textContent = 'Edit Task';
-  document.getElementById('task-title-input').value = t.title;
-  document.getElementById('task-priority-input').value = t.priority || '';
-  document.getElementById('task-due-input').value = t.due || '';
-  document.getElementById('task-assignee-input').value = t.assignee || '';
-  document.getElementById('task-recurring-input').value = t.recurring || '';
-  document.getElementById('task-status-input').value = t.status === 'completed' ? 'active' : (t.status || 'active');
-  document.getElementById('task-hold-reason').value = t.holdReason || '';
-  document.getElementById('hold-reason-group').style.display = t.status === 'hold' ? '' : 'none';
-  document.getElementById('task-notes-input').innerHTML = t.notes || '';
-  populateTagSelect(t.tagId);
+  const t=state.tasks.find(t=>t.id===id); if(!t) return;
+  state.editingTaskId=id; state.editingSubtasks=JSON.parse(JSON.stringify(t.subtasks||[]));
+  document.getElementById('modal-title-text').textContent='Edit Task';
+  document.getElementById('task-title-input').value=t.title;
+  document.getElementById('task-priority-input').value=t.priority||'';
+  document.getElementById('task-due-input').value=t.due||'';
+  document.getElementById('task-assignee-input').value=t.assignee||'';
+  document.getElementById('task-recurring-input').value=t.recurring||'';
+  const st=t.status==='completed'?'active':(t.status||'active');
+  document.getElementById('task-status-input').value=st;
+  document.getElementById('task-hold-reason').value=t.holdReason||'';
+  document.getElementById('hold-reason-group').classList.toggle('hidden',st!=='hold');
+  document.getElementById('task-notes-input').innerHTML=t.notes||'';
+  populateTagSelect(t.tagId||'');
   renderModalSubtasks();
   document.getElementById('task-modal').classList.remove('hidden');
 }
-
-document.getElementById('task-status-input')?.addEventListener('change', function() {
-  document.getElementById('hold-reason-group').style.display = this.value === 'hold' ? '' : 'none';
-});
-
+function toggleHoldReason(val) {
+  document.getElementById('hold-reason-group').classList.toggle('hidden',val!=='hold');
+}
 function saveTask() {
-  const title = document.getElementById('task-title-input').value.trim();
-  if (!title) { showToast('Please enter a task title', 'info'); return; }
-  const now = new Date().toISOString();
+  const title=document.getElementById('task-title-input').value.trim();
+  if (!title) { showToast('Please enter a task title','error'); return; }
+  const now=new Date().toISOString();
+  const newStatus=document.getElementById('task-status-input').value;
   if (state.editingTaskId) {
-    const t = state.tasks.find(t => t.id === state.editingTaskId);
-    const changes = [];
-    if (t.title !== title) changes.push(`Title changed to "${title}"`);
-    const newStatus = document.getElementById('task-status-input').value;
-    if (t.status !== newStatus) changes.push(`Status changed to ${newStatus}`);
-    t.title = title;
-    t.priority = document.getElementById('task-priority-input').value;
-    t.due = document.getElementById('task-due-input').value;
-    t.tagId = document.getElementById('task-tag-input').value;
-    t.assignee = document.getElementById('task-assignee-input').value.trim();
-    t.recurring = document.getElementById('task-recurring-input').value;
-    t.status = newStatus;
-    t.holdReason = document.getElementById('task-hold-reason').value.trim();
-    t.notes = document.getElementById('task-notes-input').innerHTML;
-    t.subtasks = state.editingSubtasks;
-    t.updatedAt = now;
-    if (changes.length) changes.forEach(c => addAudit(t, c, now));
-    showToast('Task updated', 'success');
+    const t=state.tasks.find(t=>t.id===state.editingTaskId);
+    const changes=[];
+    if (t.title!==title) changes.push(`Title changed to "${title}"`);
+    if (t.status!==newStatus) changes.push(`Status changed to ${newStatus}`);
+    const np=document.getElementById('task-priority-input').value;
+    if (t.priority!==np) changes.push(`Priority set to ${np||'none'}`);
+    t.title=title; t.priority=np;
+    t.due=document.getElementById('task-due-input').value;
+    t.tagId=document.getElementById('task-tag-input').value;
+    t.assignee=document.getElementById('task-assignee-input').value.trim();
+    t.recurring=document.getElementById('task-recurring-input').value;
+    t.status=newStatus;
+    t.holdReason=document.getElementById('task-hold-reason').value.trim();
+    t.notes=document.getElementById('task-notes-input').innerHTML;
+    t.subtasks=state.editingSubtasks; t.updatedAt=now;
+    changes.forEach(c=>addAudit(t,c,now));
+    showToast('Task updated','success');
   } else {
-    const t = {
-      id: genId(),
-      title,
-      priority: document.getElementById('task-priority-input').value,
-      due: document.getElementById('task-due-input').value,
-      tagId: document.getElementById('task-tag-input').value,
-      assignee: document.getElementById('task-assignee-input').value.trim(),
-      recurring: document.getElementById('task-recurring-input').value,
-      status: document.getElementById('task-status-input').value,
-      holdReason: document.getElementById('task-hold-reason').value.trim(),
-      notes: document.getElementById('task-notes-input').innerHTML,
-      subtasks: state.editingSubtasks,
-      timerSessions: [],
-      audit: [],
-      createdAt: now,
-      updatedAt: now,
-    };
-    addAudit(t, 'Task created', now);
-    state.tasks.push(t);
-    showToast('Task added', 'success');
+    const t={id:genId(),title,priority:document.getElementById('task-priority-input').value,
+      due:document.getElementById('task-due-input').value,tagId:document.getElementById('task-tag-input').value,
+      assignee:document.getElementById('task-assignee-input').value.trim(),
+      recurring:document.getElementById('task-recurring-input').value,status:newStatus,
+      holdReason:document.getElementById('task-hold-reason').value.trim(),
+      notes:document.getElementById('task-notes-input').innerHTML,
+      subtasks:state.editingSubtasks,timerSessions:[],audit:[],createdAt:now,updatedAt:now};
+    addAudit(t,'Task created',now);
+    state.tasks.push(t); showToast('Task added','success');
   }
-  saveState();
-  closeModal('task-modal');
-  renderContent();
+  saveState(); closeModal('task-modal'); renderContent();
 }
-
 function quickAddTask() {
-  const input = document.getElementById('quick-input');
-  const title = input.value.trim();
-  if (!title) return;
-  const now = new Date().toISOString();
-  const t = { id: genId(), title, priority: '', due: '', tagId: '', assignee: '', recurring: '', status: 'active', holdReason: '', notes: '', subtasks: [], timerSessions: [], audit: [], createdAt: now, updatedAt: now };
-  addAudit(t, 'Task created', now);
-  state.tasks.push(t);
-  saveState();
-  input.value = '';
-  showToast('Task added', 'success');
-  renderContent();
+  const inp=document.getElementById('quick-input');
+  const title=inp.value.trim(); if(!title) return;
+  const now=new Date().toISOString();
+  const t={id:genId(),title,priority:'',due:'',tagId:'',assignee:'',recurring:'',status:'active',holdReason:'',notes:'',subtasks:[],timerSessions:[],audit:[],createdAt:now,updatedAt:now};
+  addAudit(t,'Task created',now); state.tasks.push(t); saveState();
+  inp.value=''; showToast('Task added','success'); renderContent();
 }
-
 function toggleComplete(id) {
-  const t = state.tasks.find(t => t.id === id);
-  if (!t) return;
-  const now = new Date().toISOString();
-  if (t.status === 'completed') {
-    t.status = 'active';
-    t.completedAt = null;
-    addAudit(t, 'Marked as active', now);
-    // If recurring, recreate
-    if (t.recurring) scheduleRecurring(t);
-  } else {
-    t.status = 'completed';
-    t.completedAt = now;
-    addAudit(t, 'Marked as complete', now);
-    showToast('Task completed!', 'success');
-  }
-  t.updatedAt = now;
-  saveState();
-  renderContent();
+  const t=state.tasks.find(t=>t.id===id); if(!t) return;
+  const now=new Date().toISOString();
+  if (t.status==='completed') { t.status='active'; t.completedAt=null; addAudit(t,'Marked as active',now); }
+  else { t.status='completed'; t.completedAt=now; addAudit(t,'Marked as complete',now); if(t.recurring) scheduleRecurring(t); showToast('Task complete!','success'); }
+  t.updatedAt=now; saveState(); renderContent();
 }
-
-function toggleHold(id) {
-  const t = state.tasks.find(t => t.id === id);
-  if (!t) return;
-  const now = new Date().toISOString();
-  if (t.status === 'hold') {
-    t.status = 'active';
-    t.holdReason = '';
-    addAudit(t, 'Removed from hold', now);
-  } else {
-    t.status = 'hold';
-    addAudit(t, 'Put on hold', now);
-  }
-  t.updatedAt = now;
-  saveState();
-  renderContent();
+function toggleHoldStatus(id) {
+  const t=state.tasks.find(t=>t.id===id); if(!t) return;
+  const now=new Date().toISOString();
+  if (t.status==='hold') { t.status='active'; t.holdReason=''; addAudit(t,'Removed from hold',now); }
+  else { t.status='hold'; addAudit(t,'Put on hold',now); }
+  t.updatedAt=now; saveState(); renderContent();
 }
-
 function deleteTask(id) {
   if (!confirm('Delete this task?')) return;
-  state.tasks = state.tasks.filter(t => t.id !== id);
-  saveState();
-  renderContent();
-  showToast('Task deleted', 'info');
+  state.tasks=state.tasks.filter(t=>t.id!==id);
+  saveState(); renderContent(); showToast('Task deleted','info');
 }
-
-// ── Audit ────────────────────────────────────────────────────────────────
-function addAudit(t, text, time) {
-  if (!t.audit) t.audit = [];
-  t.audit.push({ text, time: time || new Date().toISOString() });
-}
-
-// ── Recurring ────────────────────────────────────────────────────────────
+function addAudit(t,text,time) { if(!t.audit) t.audit=[]; t.audit.push({text,time:time||new Date().toISOString()}); }
 function scheduleRecurring(t) {
-  if (!t.due || !t.recurring) return;
-  const d = new Date(t.due + 'T00:00:00');
-  if (t.recurring === 'daily') d.setDate(d.getDate() + 1);
-  else if (t.recurring === 'weekly') d.setDate(d.getDate() + 7);
-  else if (t.recurring === 'monthly') d.setMonth(d.getMonth() + 1);
-  const now = new Date().toISOString();
-  const newTask = { ...JSON.parse(JSON.stringify(t)), id: genId(), status: 'active', completedAt: null, due: d.toISOString().slice(0,10), audit: [], createdAt: now, updatedAt: now, timerSessions: [] };
-  addAudit(newTask, `Recurring task created from ${t.id}`, now);
-  state.tasks.push(newTask);
+  if (!t.due||!t.recurring) return;
+  const d=new Date(t.due+'T12:00:00');
+  if (t.recurring==='daily') d.setDate(d.getDate()+1);
+  else if (t.recurring==='weekly') d.setDate(d.getDate()+7);
+  else if (t.recurring==='monthly') d.setMonth(d.getMonth()+1);
+  const now=new Date().toISOString();
+  const nt={...JSON.parse(JSON.stringify(t)),id:genId(),status:'active',completedAt:null,due:d.toISOString().slice(0,10),audit:[],createdAt:now,updatedAt:now,timerSessions:[]};
+  addAudit(nt,'Recurring task auto-created',now); state.tasks.push(nt);
 }
 
-// ── Subtasks (modal) ───────────────────────────────────────────────────
 function renderModalSubtasks() {
-  const el = document.getElementById('modal-subtask-list');
-  if (!el) return;
-  el.innerHTML = state.editingSubtasks.map((s, i) => `
-    <div class="subtask-item">
-      <div class="subtask-check ${s.done?'done':''}" onclick="toggleModalSubtask(${i})">
-        <svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg>
-      </div>
-      <span class="subtask-text ${s.done?'done':''}">${escHtml(s.text)}</span>
-      <button class="subtask-del" onclick="removeModalSubtask(${i})">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l8 8M10 2L2 10"/></svg>
+  const el=document.getElementById('modal-subtask-list'); if(!el) return;
+  el.innerHTML=state.editingSubtasks.map((s,i)=>`<div class="subtask-item">
+    <div class="subtask-check ${s.done?'done':''}" onclick="toggleModalSubtask(${i})">
+      <svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg>
+    </div>
+    <span class="subtask-text ${s.done?'done':''}">${escHtml(s.text)}</span>
+    <button class="subtask-del" onclick="removeModalSubtask(${i})"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l8 8M10 2L2 10"/></svg></button>
+  </div>`).join('');
+}
+function addSubtaskFromModal() {
+  const inp=document.getElementById('new-subtask-input');
+  const text=inp.value.trim(); if(!text) return;
+  state.editingSubtasks.push({id:genId(),text,done:false});
+  inp.value=''; renderModalSubtasks();
+}
+function toggleModalSubtask(i) { state.editingSubtasks[i].done=!state.editingSubtasks[i].done; renderModalSubtasks(); }
+function removeModalSubtask(i) { state.editingSubtasks.splice(i,1); renderModalSubtasks(); }
+
+function populateTagSelect(selected) {
+  document.getElementById('task-tag-input').innerHTML='<option value="">No tag</option>'+
+    state.tags.map(t=>`<option value="${t.id}" ${selected===t.id?'selected':''}>${escHtml(t.name)}</option>`).join('');
+}
+function tagColorVar(c) { return ({blue:'var(--blue)',green:'var(--green)',amber:'var(--amber)',red:'var(--red)',gold:'var(--gold)'})[c]||'var(--text3)'; }
+function renderSidebarTags() {
+  document.getElementById('sidebar-tags').innerHTML=state.tags.map(t=>`
+    <div class="tag-item ${state.selectedTagFilter===t.id?'active':''}" data-tag="${t.id}" onclick="switchTagFilter('${t.id}')">
+      <span class="tag-dot" style="background:${tagColorVar(t.color)}"></span>
+      <span class="tag-name">${escHtml(t.name)}</span>
+      <button class="tag-del-btn" onclick="event.stopPropagation();deleteTag('${t.id}')" title="Delete tag">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l8 8M10 2L2 10"/></svg>
       </button>
     </div>`).join('');
 }
-function addSubtaskFromModal() {
-  const inp = document.getElementById('new-subtask-input');
-  const text = inp.value.trim();
-  if (!text) return;
-  state.editingSubtasks.push({ id: genId(), text, done: false });
-  inp.value = '';
-  renderModalSubtasks();
+function openTagModal() {
+  state.newTagColor='blue';
+  document.getElementById('new-tag-name').value='';
+  document.querySelectorAll('#tag-color-picker .btn').forEach(b=>b.style.borderColor='transparent');
+  document.getElementById('tag-modal').classList.remove('hidden');
 }
-function toggleModalSubtask(i) { state.editingSubtasks[i].done = !state.editingSubtasks[i].done; renderModalSubtasks(); }
-function removeModalSubtask(i) { state.editingSubtasks.splice(i, 1); renderModalSubtasks(); }
-
-// ── Tags ────────────────────────────────────────────────────────────────
-function populateTagSelect(selected) {
-  const sel = document.getElementById('task-tag-input');
-  sel.innerHTML = '<option value="">No tag</option>' + state.tags.map(t => `<option value="${t.id}" ${selected===t.id?'selected':''}>${escHtml(t.name)}</option>`).join('');
+function selectTagColor(c,btn) {
+  state.newTagColor=c;
+  document.querySelectorAll('#tag-color-picker .btn').forEach(b=>b.style.borderColor='transparent');
+  btn.style.borderColor=tagColorVar(c);
 }
-function renderSidebarTags() {
-  const el = document.getElementById('sidebar-tags');
-  el.innerHTML = state.tags.map(t => `<div class="tag-item ${state.selectedTagFilter===t.id?'active':''}" data-tag="${t.id}" onclick="switchTagFilter('${t.id}')">
-    <span class="tag-dot" style="background: var(--${t.color==='purple'?'accent':t.color==='amber'?'amber':t.color==='red'?'red':t.color==='green'?'green':'blue'})"></span>
-    ${escHtml(t.name)}
-  </div>`).join('');
-}
-function openTagModal() { state.newTagColor = 'blue'; document.getElementById('new-tag-name').value = ''; document.getElementById('tag-modal').classList.remove('hidden'); }
-function selectTagColor(c) { state.newTagColor = c; }
 function saveTag() {
-  const name = document.getElementById('new-tag-name').value.trim();
-  if (!name) return;
-  state.tags.push({ id: genId(), name, color: state.newTagColor });
-  saveState();
-  renderSidebarTags();
-  populateTagSelect();
-  closeModal('tag-modal');
-  showToast('Tag added', 'success');
+  const name=document.getElementById('new-tag-name').value.trim();
+  if (!name) { showToast('Enter a tag name','error'); return; }
+  state.tags.push({id:genId(),name,color:state.newTagColor});
+  saveState(); renderSidebarTags(); populateTagSelect('');
+  closeModal('tag-modal'); showToast('Tag added','success');
+}
+function deleteTag(id) {
+  if (!confirm('Delete this tag? Tasks using it will lose their tag.')) return;
+  state.tags=state.tags.filter(t=>t.id!==id);
+  state.tasks.forEach(t=>{ if(t.tagId===id) t.tagId=''; });
+  if (state.selectedTagFilter===id) { state.selectedTagFilter=null; state.view='tasks'; }
+  saveState(); renderContent(); showToast('Tag deleted','info');
 }
 
-// ── Timer ────────────────────────────────────────────────────────────────
 function openTimer(id) {
-  if (state.timerTaskId && state.timerTaskId !== id && state.timerRunning) stopAndSaveTimer();
-  state.timerTaskId = id;
-  const t = state.tasks.find(t => t.id === id);
-  state.timerElapsed = (t?.timerSessions||[]).reduce((a,s) => a + s.duration, 0);
-  document.getElementById('timer-task-name').textContent = t?.title || '';
-  document.getElementById('timer-modal').classList.remove('hidden');
+  if (state.timerTaskId&&state.timerTaskId!==id&&state.timerRunning) stopAndSaveTimer();
+  state.timerTaskId=id;
+  const t=state.tasks.find(t=>t.id===id);
+  state.timerElapsed=(t?.timerSessions||[]).reduce((a,s)=>a+s.duration,0);
+  state.timerRunning=false; clearInterval(state.timerInterval);
+  document.getElementById('timer-task-name').textContent=t?.title||'';
+  document.getElementById('timer-toggle-btn').textContent='Start';
   updateTimerDisplay();
+  document.getElementById('timer-modal').classList.remove('hidden');
 }
 function toggleTimer() {
   if (state.timerRunning) {
     clearInterval(state.timerInterval);
-    state.timerElapsed += Math.floor((Date.now() - state.timerStart) / 1000);
-    state.timerRunning = false;
-    document.getElementById('timer-toggle-btn').textContent = 'Start';
+    state.timerElapsed+=Math.floor((Date.now()-state.timerStart)/1000);
+    state.timerRunning=false;
+    document.getElementById('timer-toggle-btn').textContent='Resume';
   } else {
-    state.timerStart = Date.now();
-    state.timerRunning = true;
-    state.timerInterval = setInterval(() => { updateTimerDisplay(); renderContent(); }, 1000);
-    document.getElementById('timer-toggle-btn').textContent = 'Pause';
+    state.timerStart=Date.now(); state.timerRunning=true;
+    state.timerInterval=setInterval(updateTimerDisplay,1000);
+    document.getElementById('timer-toggle-btn').textContent='Pause';
   }
 }
 function stopAndSaveTimer() {
-  if (state.timerRunning) {
-    clearInterval(state.timerInterval);
-    state.timerElapsed += Math.floor((Date.now() - state.timerStart) / 1000);
-    state.timerRunning = false;
-  }
-  if (state.timerTaskId && state.timerElapsed > 0) {
-    const t = state.tasks.find(t => t.id === state.timerTaskId);
-    if (t) {
-      if (!t.timerSessions) t.timerSessions = [];
-      t.timerSessions = [{ duration: state.timerElapsed, date: today() }];
-      const now = new Date().toISOString();
-      addAudit(t, `Timer logged: ${formatSeconds(state.timerElapsed)}`, now);
-      saveState();
-    }
+  if (state.timerRunning) { clearInterval(state.timerInterval); state.timerElapsed+=Math.floor((Date.now()-state.timerStart)/1000); state.timerRunning=false; }
+  if (state.timerTaskId&&state.timerElapsed>0) {
+    const t=state.tasks.find(t=>t.id===state.timerTaskId);
+    if (t) { if(!t.timerSessions) t.timerSessions=[]; t.timerSessions=[{duration:state.timerElapsed,date:todayStr()}]; addAudit(t,`Timer logged: ${formatSeconds(state.timerElapsed)}`,new Date().toISOString()); saveState(); }
   }
 }
 function stopAndCloseTimer() {
-  stopAndSaveTimer();
-  state.timerTaskId = null;
-  state.timerElapsed = 0;
-  state.timerRunning = false;
-  closeModal('timer-modal');
-  renderContent();
+  stopAndSaveTimer(); state.timerTaskId=null; state.timerElapsed=0; state.timerRunning=false;
+  closeModal('timer-modal'); renderContent();
 }
 function updateTimerDisplay() {
-  const elapsed = state.timerElapsed + (state.timerRunning ? Math.floor((Date.now() - state.timerStart) / 1000) : 0);
-  document.getElementById('timer-display').textContent = formatSeconds(elapsed);
+  const e=state.timerElapsed+(state.timerRunning?Math.floor((Date.now()-state.timerStart)/1000):0);
+  const el=document.getElementById('timer-display'); if(el) el.textContent=formatSeconds(e);
 }
-function formatSeconds(s) {
-  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
-  return `${pad(h)}:${pad(m)}:${pad(sec)}`;
-}
-function pad(n) { return String(n).padStart(2, '0'); }
+function formatSeconds(s) { const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sc=s%60; return `${pad(h)}:${pad(m)}:${pad(sc)}`; }
+function pad(n) { return String(n).padStart(2,'0'); }
 
-// ── Calendar ─────────────────────────────────────────────────────────────
 function renderCalendar(el) {
-  const d = state.calendarDate;
-  const year = d.getFullYear(), month = d.getMonth();
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const todayStr = today();
-  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const d=state.calendarDate;
+  const year=d.getFullYear(), month=d.getMonth();
+  const firstDay=new Date(year,month,1).getDay();
+  const dim=new Date(year,month+1,0).getDate();
+  const td=todayStr();
+  const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-  const tasksByDate = {};
-  state.tasks.forEach(t => {
-    if (t.due) { if (!tasksByDate[t.due]) tasksByDate[t.due] = []; tasksByDate[t.due].push(t); }
-    if (t.completedAt) { const d = t.completedAt.slice(0,10); if (!tasksByDate[d]) tasksByDate[d] = []; tasksByDate[d].push(t); }
+  // Collect all relevant dates from tasks
+  const taskDates=new Set();
+  state.tasks.forEach(t=>{
+    if (t.due) taskDates.add(t.due);
+    if (t.completedAt) taskDates.add(t.completedAt.slice(0,10));
   });
 
-  let cells = '';
-  const startPad = firstDay;
-  for (let i = 0; i < startPad; i++) {
-    const prevDay = new Date(year, month, -startPad + i + 1);
-    cells += `<div class="cal-cell other-month">${prevDay.getDate()}</div>`;
-  }
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dateStr = `${year}-${pad(month+1)}-${pad(day)}`;
-    const hasTasks = tasksByDate[dateStr]?.length > 0;
-    const isToday = dateStr === todayStr;
-    cells += `<div class="cal-cell ${isToday?'today':''} ${hasTasks?'has-tasks':''}" onclick="showCalDay('${dateStr}')">${day}</div>`;
+  let cells='';
+  for (let i=0;i<firstDay;i++) { const prev=new Date(year,month,1-firstDay+i); cells+=`<div class="cal-cell other-month">${prev.getDate()}</div>`; }
+  for (let day=1;day<=dim;day++) {
+    const ds=`${year}-${pad(month+1)}-${pad(day)}`;
+    cells+=`<div class="cal-cell ${ds===td?'today':''} ${taskDates.has(ds)?'has-tasks':''}" onclick="showCalDay('${ds}')">${day}</div>`;
   }
 
-  el.innerHTML = `<div class="calendar-wrap">
+  el.innerHTML=`<div class="calendar-wrap">
     <div class="cal-header">
       <button class="btn btn-ghost btn-icon" onclick="calNav(-1)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L5 7l4 4"/></svg></button>
-      <span class="cal-title">${monthNames[month]} ${year}</span>
+      <span class="cal-title">${MN[month]} ${year}</span>
       <button class="btn btn-ghost btn-icon" onclick="calNav(1)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3l4 4-4 4"/></svg></button>
     </div>
     <div class="cal-grid">
-      ${dayNames.map(d => `<div class="cal-day-name">${d}</div>`).join('')}
+      ${DN.map(n=>`<div class="cal-day-name">${n}</div>`).join('')}
       ${cells}
     </div>
-  </div>
-  <div id="cal-day-tasks" style="margin-top:16px;"></div>`;
+  </div><div id="cal-day-tasks" style="margin-top:16px;"></div>`;
 }
-
-function calNav(dir) {
-  const d = state.calendarDate;
-  state.calendarDate = new Date(d.getFullYear(), d.getMonth() + dir, 1);
-  renderContent();
-}
-
+function calNav(dir) { const d=state.calendarDate; state.calendarDate=new Date(d.getFullYear(),d.getMonth()+dir,1); renderContent(); }
 function showCalDay(dateStr) {
-  const el = document.getElementById('cal-day-tasks');
-  if (!el) return;
-  const tasks = state.tasks.filter(t => t.due === dateStr || (t.completedAt && t.completedAt.slice(0,10) === dateStr));
-  if (!tasks.length) { el.innerHTML = `<p style="color:var(--text3);font-size:13px;text-align:center;padding:16px;">No tasks for ${fmtDate(dateStr)}</p>`; return; }
-  el.innerHTML = `<div style="margin-bottom:8px;font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;">Tasks for ${fmtDate(dateStr)}</div>
-    <div style="display:flex;flex-direction:column;gap:4px;">${tasks.map(t => renderTaskRow(t)).join('')}</div>`;
+  document.querySelectorAll('.cal-cell').forEach(c=>{
+    const oc=c.getAttribute('onclick')||'';
+    c.classList.toggle('selected', oc.includes(`'${dateStr}'`));
+  });
+  const el=document.getElementById('cal-day-tasks'); if(!el) return;
+  const tasks=state.tasks.filter(t=>t.due===dateStr||(t.completedAt&&t.completedAt.slice(0,10)===dateStr));
+  if (!tasks.length) { el.innerHTML=`<p style="color:var(--text3);font-size:13px;text-align:center;padding:20px;">No tasks for ${fmtDate(dateStr)}</p>`; return; }
+  el.innerHTML=`<div style="margin-bottom:10px;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;">Tasks for ${fmtDate(dateStr)}</div>
+    <div style="display:flex;flex-direction:column;gap:4px;">${tasks.map(t=>renderTaskRow(t)).join('')}</div>`;
   setupDragAndDrop();
 }
 
-// ── Dashboard ─────────────────────────────────────────────────────────────
 function renderDashboard(el) {
-  const total = state.tasks.length;
-  const completed = state.tasks.filter(t => t.status === 'completed').length;
-  const active = state.tasks.filter(t => t.status === 'active').length;
-  const hold = state.tasks.filter(t => t.status === 'hold').length;
-  const overdue = state.tasks.filter(t => isOverdue(t.due) && t.status !== 'completed').length;
+  const total=state.tasks.length;
+  const completed=state.tasks.filter(t=>t.status==='completed').length;
+  const active=state.tasks.filter(t=>t.status==='active').length;
+  const hold=state.tasks.filter(t=>t.status==='hold').length;
+  const overdue=state.tasks.filter(t=>isOverdue(t.due)&&t.status!=='completed').length;
+  const byP={high:0,medium:0,low:0,none:0};
+  state.tasks.filter(t=>t.status!=='completed').forEach(t=>byP[t.priority||'none']++);
+  const maxP=Math.max(...Object.values(byP),1);
+  const byTag={};
+  state.tasks.forEach(t=>{ if(t.tagId) byTag[t.tagId]=(byTag[t.tagId]||0)+1; });
+  const maxT=Math.max(...Object.values(byTag),1);
+  const last7=[];
+  for (let i=6;i>=0;i--) { const d2=new Date(); d2.setDate(d2.getDate()-i); const ds=d2.toISOString().slice(0,10); last7.push({label:d2.toLocaleDateString('en-GB',{weekday:'short'}),count:state.tasks.filter(t=>t.completedAt&&t.completedAt.slice(0,10)===ds).length}); }
+  const maxL=Math.max(...last7.map(d=>d.count),1);
+  const timerTotal=state.tasks.reduce((a,t)=>a+(t.timerSessions||[]).reduce((b,s)=>b+s.duration,0),0);
 
-  // By priority
-  const byPriority = { high: 0, medium: 0, low: 0, none: 0 };
-  state.tasks.filter(t => t.status !== 'completed').forEach(t => { byPriority[t.priority||'none']++; });
-  const maxP = Math.max(...Object.values(byPriority), 1);
-
-  // By tag
-  const byTag = {};
-  state.tasks.forEach(t => { if (t.tagId) { byTag[t.tagId] = (byTag[t.tagId]||0) + 1; } });
-  const maxT = Math.max(...Object.values(byTag), 1);
-
-  // Completions last 7 days
-  const last7 = [];
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date(); d.setDate(d.getDate() - i);
-    const ds = d.toISOString().slice(0,10);
-    last7.push({ label: d.toLocaleDateString('en-GB', { weekday: 'short' }), date: ds, count: state.tasks.filter(t => t.completedAt && t.completedAt.slice(0,10) === ds).length });
-  }
-  const maxL = Math.max(...last7.map(d => d.count), 1);
-
-  // Total timer
-  const totalTimer = state.tasks.reduce((a, t) => a + (t.timerSessions||[]).reduce((b,s) => b+s.duration, 0), 0);
-
-  el.innerHTML = `
-    <div class="stats-row">
-      <div class="stat-card"><div class="stat-label">Total Tasks</div><div class="stat-value">${total}</div></div>
-      <div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value green">${completed}</div></div>
-      <div class="stat-card"><div class="stat-label">Active</div><div class="stat-value accent">${active}</div></div>
-      <div class="stat-card"><div class="stat-label">Time Logged</div><div class="stat-value" style="font-size:16px;font-family:'DM Mono',monospace">${formatSeconds(totalTimer)}</div></div>
-    </div>
-    <div class="dashboard-grid">
-      <div class="chart-card">
-        <div class="chart-title">Completions — Last 7 days</div>
-        <div class="bar-chart">
-          ${last7.map(d => `<div class="bar-row">
-            <span class="bar-label">${d.label}</span>
-            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(d.count/maxL*100)}%;background:var(--green)"></div></div>
-            <span class="bar-val">${d.count}</span>
-          </div>`).join('')}
-        </div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">Status breakdown</div>
-        <div class="donut-wrap">
-          <svg width="90" height="90" viewBox="0 0 36 36">${donutPath(completed, active, hold, overdue, total)}</svg>
-          <div class="donut-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Completed (${completed})</div>
-            <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Active (${active})</div>
-            <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>On hold (${hold})</div>
-            <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>Overdue (${overdue})</div>
-          </div>
-        </div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">By priority (active)</div>
-        <div class="bar-chart">
-          ${[['high','High',`var(--red)`],['medium','Medium',`var(--amber)`],['low','Low',`var(--blue)`],['none','None',`var(--text3)`]].map(([k,l,c]) => `<div class="bar-row">
-            <span class="bar-label">${l}</span>
-            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(byPriority[k]/maxP*100)}%;background:${c}"></div></div>
-            <span class="bar-val">${byPriority[k]}</span>
-          </div>`).join('')}
-        </div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">By tag</div>
-        <div class="bar-chart">
-          ${state.tags.map(tg => `<div class="bar-row">
-            <span class="bar-label">${escHtml(tg.name)}</span>
-            <div class="bar-track"><div class="bar-fill" style="width:${Math.round((byTag[tg.id]||0)/maxT*100)}%;background:var(--accent)"></div></div>
-            <span class="bar-val">${byTag[tg.id]||0}</span>
-          </div>`).join('')}
-        </div>
-      </div>
-    </div>`;
+  el.innerHTML=`<div class="stats-row">
+    <div class="stat-card"><div class="stat-label">Total</div><div class="stat-value">${total}</div></div>
+    <div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value c-green">${completed}</div></div>
+    <div class="stat-card"><div class="stat-label">Active</div><div class="stat-value c-gold">${active}</div></div>
+    <div class="stat-card"><div class="stat-label">Time logged</div><div class="stat-value c-gold" style="font-size:15px;font-family:'DM Mono',monospace;">${formatSeconds(timerTotal)}</div></div>
+  </div>
+  <div class="dashboard-grid">
+    <div class="chart-card"><div class="chart-title">Completions — last 7 days</div><div class="bar-chart">${last7.map(d=>`<div class="bar-row"><span class="bar-label">${d.label}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(d.count/maxL*100)}%;background:var(--green)"></div></div><span class="bar-val">${d.count}</span></div>`).join('')}</div></div>
+    <div class="chart-card"><div class="chart-title">Status breakdown</div><div class="donut-wrap"><svg width="90" height="90" viewBox="0 0 36 36">${donutPath(completed,active,hold,overdue,total)}</svg><div class="donut-legend"><div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Done (${completed})</div><div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Active (${active})</div><div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Hold (${hold})</div><div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>Overdue (${overdue})</div></div></div></div>
+    <div class="chart-card"><div class="chart-title">By priority (active)</div><div class="bar-chart">${[['high','High','var(--red)'],['medium','Medium','var(--amber)'],['low','Low','var(--blue)'],['none','None','var(--text3)']].map(([k,l,c])=>`<div class="bar-row"><span class="bar-label">${l}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(byP[k]/maxP*100)}%;background:${c}"></div></div><span class="bar-val">${byP[k]}</span></div>`).join('')}</div></div>
+    <div class="chart-card"><div class="chart-title">By tag</div><div class="bar-chart">${state.tags.map(tg=>`<div class="bar-row"><span class="bar-label">${escHtml(tg.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round((byTag[tg.id]||0)/maxT*100)}%;background:${tagColorVar(tg.color)}"></div></div><span class="bar-val">${byTag[tg.id]||0}</span></div>`).join('')}</div></div>
+  </div>`;
+}
+function donutPath(completed,active,hold,overdue,total) {
+  if (total===0) return `<circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--surface3)" stroke-width="3.5"/>`;
+  const vals=[{v:completed,color:'var(--green)'},{v:active,color:'var(--gold)'},{v:hold,color:'var(--amber)'},{v:overdue,color:'var(--red)'}];
+  const r=15.9,cx=18,cy=18,circ=2*Math.PI*r; let paths='',offset=0;
+  vals.forEach(({v,color})=>{ if(!v) return; const dash=(v/total)*circ; paths+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="3.5" stroke-dasharray="${dash} ${circ-dash}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"/>`; offset+=dash; });
+  return paths+`<text x="18" y="21" text-anchor="middle" fill="var(--text)" font-size="7" font-family="DM Sans,sans-serif" font-weight="500">${total}</text>`;
 }
 
-function donutPath(completed, active, hold, overdue, total) {
-  if (total === 0) return `<circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--surface3)" stroke-width="3.5"/>`;
-  const vals = [
-    { v: completed, color: 'var(--green)' },
-    { v: active, color: 'var(--accent)' },
-    { v: hold, color: 'var(--amber)' },
-    { v: overdue, color: 'var(--red)' },
-  ];
-  const r = 15.9, cx = 18, cy = 18, circ = 2 * Math.PI * r;
-  let paths = '', offset = 0;
-  vals.forEach(({ v, color }) => {
-    if (!v) return;
-    const pct = v / total;
-    const dash = pct * circ;
-    paths += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="3.5" stroke-dasharray="${dash} ${circ - dash}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"/>`;
-    offset += dash;
-  });
-  return paths + `<text x="18" y="21" text-anchor="middle" fill="var(--text)" font-size="7" font-family="DM Sans,sans-serif" font-weight="500">${total}</text>`;
-}
-
-// ── Drag and drop ────────────────────────────────────────────────────────
-let dragId = null;
-function dragStart(e, id) { dragId = id; e.currentTarget.classList.add('dragging'); }
+let dragId=null;
+function dragStart(e,id) { dragId=id; setTimeout(()=>e.currentTarget?.classList.add('dragging'),0); }
 function dragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
 function dragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
-function dropTask(e, targetId) {
-  e.preventDefault();
-  e.currentTarget.classList.remove('drag-over');
-  if (!dragId || dragId === targetId) { dragId = null; return; }
-  const fromIdx = state.tasks.findIndex(t => t.id === dragId);
-  const toIdx = state.tasks.findIndex(t => t.id === targetId);
-  if (fromIdx < 0 || toIdx < 0) { dragId = null; return; }
-  const [moved] = state.tasks.splice(fromIdx, 1);
-  state.tasks.splice(toIdx, 0, moved);
-  dragId = null;
-  saveState();
-  renderContent();
+function dropTask(e,targetId) {
+  e.preventDefault(); e.currentTarget.classList.remove('drag-over');
+  if (!dragId||dragId===targetId) { dragId=null; return; }
+  const fi=state.tasks.findIndex(t=>t.id===dragId);
+  const ti=state.tasks.findIndex(t=>t.id===targetId);
+  if (fi<0||ti<0) { dragId=null; return; }
+  const [m]=state.tasks.splice(fi,1); state.tasks.splice(ti,0,m);
+  dragId=null; saveState(); renderContent();
 }
-function setupDragAndDrop() {
-  document.querySelectorAll('.task-row').forEach(row => {
-    row.addEventListener('dragend', () => row.classList.remove('dragging'));
-  });
-}
+function setupDragAndDrop() { document.querySelectorAll('.task-row').forEach(r=>r.addEventListener('dragend',()=>r.classList.remove('dragging'))); }
 
-// ── Badges ────────────────────────────────────────────────────────────────
 function updateBadges() {
-  const active = state.tasks.filter(t => t.status === 'active').length;
-  const todayCount = state.tasks.filter(t => isDueToday(t.due) && t.status !== 'completed').length;
-  const overdueCount = state.tasks.filter(t => isOverdue(t.due) && t.status !== 'completed').length;
-  document.getElementById('badge-tasks').textContent = active;
-  document.getElementById('badge-today').textContent = todayCount;
-  const ob = document.getElementById('badge-overdue');
-  ob.textContent = overdueCount;
-  ob.classList.toggle('hidden', overdueCount === 0);
+  const ac=state.tasks.filter(t=>t.status==='active').length;
+  const tc=state.tasks.filter(t=>isDueToday(t.due)&&t.status!=='completed').length;
+  const oc=state.tasks.filter(t=>isOverdue(t.due)&&t.status!=='completed').length;
+  document.getElementById('badge-tasks').textContent=ac;
+  document.getElementById('badge-today').textContent=tc;
+  const ob=document.getElementById('badge-overdue'); ob.textContent=oc; ob.classList.toggle('hidden',oc===0);
 }
-
-// ── Groups ────────────────────────────────────────────────────────────────
 function toggleGroup(key) {
-  const el = document.getElementById('group-' + key);
-  const chev = document.getElementById('chev-' + key);
-  if (!el) return;
-  el.style.display = el.style.display === 'none' ? '' : 'none';
-  chev.classList.toggle('collapsed');
+  const el=document.getElementById('group-'+key); const ch=document.getElementById('chev-'+key); if(!el) return;
+  const hidden=el.style.display==='none'; el.style.display=hidden?'':'none'; ch.classList.toggle('collapsed',!hidden);
 }
-
-// ── Modal utils ──────────────────────────────────────────────────────────
 function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-function rteCmd(cmd) { document.getElementById('task-notes-input').focus(); document.execCommand(cmd, false, null); }
-
-// ── Toast ────────────────────────────────────────────────────────────────
-function showToast(msg, type='info') {
-  const c = document.getElementById('toast-container');
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
-  t.textContent = msg;
-  c.appendChild(t);
-  setTimeout(() => t.remove(), 3000);
+function rteCmd(cmd) { document.execCommand(cmd,false,null); }
+function showToast(msg,type='info') {
+  const c=document.getElementById('toast-container'); const t=document.createElement('div');
+  t.className=`toast ${type}`; t.textContent=msg; c.appendChild(t); setTimeout(()=>t.remove(),3000);
 }
 
-// ── Utils ────────────────────────────────────────────────────────────────
-function escHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-// Close modals on overlay click
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', e => { if (e.target === overlay) { const id = overlay.id; if (id === 'timer-modal') stopAndCloseTimer(); else closeModal(id); } });
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) { if(overlay.id==='timer-modal') stopAndCloseTimer(); else closeModal(overlay.id); } });
 });
 
-// ── Boot ──────────────────────────────────────────────────────────────────
-loadState();
-renderContent();
-renderSidebarTags();
+loadState(); renderContent(); renderSidebarTags();
 </script>
 </body>
 </html>
