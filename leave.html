@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annual Leave Planner</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f3;color:#1a1a18;min-height:100vh;padding:1.5rem}
+h1{font-size:20px;font-weight:500;margin-bottom:1rem}
+.top-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:1rem;padding:12px;background:#ebebea;border-radius:8px;border:0.5px solid #d0d0cc}
+.top-bar label{font-size:12px;color:#666;display:block;margin-bottom:3px}
+.top-bar input,.top-bar select{font-size:13px;padding:5px 8px;border:0.5px solid #ccc;border-radius:6px;background:#fff;color:#1a1a18}
+.stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:1rem}
+.stat{background:#ebebea;border-radius:8px;padding:10px 12px}
+.stat-label{font-size:12px;color:#666;margin-bottom:4px}
+.stat-value{font-size:20px;font-weight:500;color:#1a1a18}
+.stat-value.warn{color:#b45309}
+.stat-value.ok{color:#166534}
+.panel{background:#fff;border:0.5px solid #d0d0cc;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
+.panel h3{font-size:15px;font-weight:500;margin-bottom:10px}
+/* view tabs */
+.view-tabs{display:flex;gap:4px;margin-bottom:1rem}
+.view-tab{padding:6px 16px;border:0.5px solid #ccc;border-radius:6px;background:#fff;cursor:pointer;font-size:13px;color:#555}
+.view-tab.active{background:#1a1a18;color:#fff;border-color:#1a1a18}
+/* month calendar */
+.cal-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.cal-header h3{font-size:15px;font-weight:500;flex:1;text-align:center;margin:0}
+.nav-btn{background:none;border:0.5px solid #ccc;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;color:#1a1a18}
+.nav-btn:hover{background:#f0f0ee}
+.months-nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
+.month-btn{font-size:11px;padding:3px 8px;border:0.5px solid #d0d0cc;border-radius:6px;background:none;cursor:pointer;color:#666}
+.month-btn.active{background:#dbeafe;color:#1e40af;border-color:#93c5fd}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#666;margin-bottom:8px}
+.legend-item{display:flex;align-items:center;gap:4px}
+.legend-swatch{width:12px;height:12px;border-radius:3px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.day-header{font-size:11px;color:#888;text-align:center;padding:4px 0;font-weight:500}
+.day{font-size:12px;text-align:center;padding:5px 2px;border-radius:4px;min-height:32px;border:0.5px solid transparent;position:relative;color:#1a1a18}
+.day.other-month{color:#ccc}
+.day.today{border-color:#3b82f6;color:#1e40af;font-weight:500}
+.day.leave{background:#c0dd97;color:#27500a}
+.day.bank-holiday{background:#b5d4f4;color:#0c447c}
+.day.weekend{color:#aaa}
+.day.out-of-range{opacity:0.3}
+.trip-dot{width:5px;height:5px;border-radius:50%;position:absolute;bottom:3px;left:50%;transform:translateX(-50%)}
+/* year view */
+.year-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.mini-month h4{font-size:12px;font-weight:500;text-align:center;margin-bottom:4px;color:#555}
+.mini-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}
+.mini-day-hdr{font-size:9px;color:#aaa;text-align:center;padding:2px 0}
+.mini-day{font-size:10px;text-align:center;padding:2px 1px;border-radius:3px;color:#1a1a18;position:relative}
+.mini-day.other-month{color:#ddd}
+.mini-day.leave{background:#c0dd97;color:#27500a}
+.mini-day.bank-holiday{background:#b5d4f4;color:#0c447c}
+.mini-day.weekend{color:#ccc}
+.mini-day.today{font-weight:700;color:#1e40af}
+.mini-day.out-of-range{opacity:0.25}
+/* trips list */
+.trip-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:0.5px solid #e5e5e5;font-size:13px;flex-wrap:wrap}
+.trip-row:last-child{border-bottom:none}
+.trip-color-swatch{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.trip-name{font-weight:500;min-width:80px}
+.trip-dates{color:#666;flex:1;min-width:120px}
+.trip-days{font-weight:500;min-width:70px}
+.trip-actions{display:flex;gap:4px;flex-shrink:0}
+.icon-btn{background:none;border:0.5px solid #ddd;border-radius:4px;cursor:pointer;color:#666;font-size:12px;padding:2px 7px;line-height:1.4}
+.icon-btn:hover{background:#f0f0ee}
+.icon-btn.del:hover{color:#dc2626;background:#fee2e2;border-color:#fca5a5}
+/* edit form inline */
+.edit-form{background:#f9f9f7;border-radius:6px;padding:8px 10px;margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end}
+.edit-form label{font-size:11px;color:#666;display:block;margin-bottom:2px}
+.edit-form input{font-size:12px;padding:4px 6px;border:0.5px solid #ccc;border-radius:5px;background:#fff;color:#1a1a18}
+.save-btn{padding:4px 12px;background:#1a1a18;color:#fff;border:none;border-radius:5px;cursor:pointer;font-size:12px}
+.save-btn:hover{background:#333}
+.cancel-btn{padding:4px 10px;background:#fff;border:0.5px solid #ccc;border-radius:5px;cursor:pointer;font-size:12px}
+/* add form */
+.add-trip-form{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end}
+.add-trip-form label{font-size:12px;color:#666;display:block;margin-bottom:3px}
+.add-trip-form input{font-size:13px;padding:5px 8px;border:0.5px solid #ccc;border-radius:6px;background:#fff;color:#1a1a18}
+.add-btn{padding:6px 16px;background:#fff;border:0.5px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;white-space:nowrap}
+.add-btn:hover{background:#f0f0ee}
+#add-msg{font-size:12px;margin-top:6px;color:#666}
+.empty{font-size:13px;color:#888}
+.year-label{font-size:12px;color:#888;font-weight:400;margin-left:6px}
+.save-indicator{font-size:11px;color:#166534;margin-left:8px;opacity:0;transition:opacity 0.3s}
+.save-indicator.show{opacity:1}
+/* ── Top nav (Hub / Tasks links) ── */
+.top-nav{display:flex;align-items:center;gap:14px;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:0.5px solid #d0d0cc}
+.top-nav a{text-decoration:none;color:#2D5E3A;font-weight:600;font-size:14px}
+.top-nav a:hover{text-decoration:underline}
+.top-nav .sep{color:#bbb;font-weight:400}
+.top-nav .crumb{color:#666;font-weight:400;font-size:13px}
+/* ── Task-due dot on calendar ── */
+.task-dot{width:5px;height:5px;border-radius:50%;background:#2D5E3A;position:absolute;top:3px;right:3px}
+.mini-day .task-dot{width:3px;height:3px;top:1px;right:1px}
+.day{position:relative}
+/* ── Conflict modal for trip-vs-task overlap ── */
+.conflict-overlay{position:fixed;inset:0;background:rgba(26,25,22,0.5);z-index:300;display:none;align-items:center;justify-content:center}
+.conflict-overlay.open{display:flex}
+.conflict-modal{background:#fff;border:0.5px solid #d0d0cc;border-radius:12px;padding:1.25rem 1.5rem;width:100%;max-width:460px;box-shadow:0 4px 24px rgba(0,0,0,0.12)}
+.conflict-title{font-size:16px;font-weight:600;margin-bottom:0.5rem;display:flex;align-items:center;gap:8px}
+.conflict-icon{width:26px;height:26px;border-radius:50%;background:#FBF3E4;color:#B07D2A;display:flex;align-items:center;justify-content:center;font-weight:700}
+.conflict-body{font-size:13px;color:#555;line-height:1.55;margin-bottom:1rem}
+.conflict-body strong{color:#1a1a18}
+.conflict-list{margin-top:0.5rem;padding-left:1rem;list-style:disc}
+.conflict-list li{margin:2px 0;font-size:12.5px}
+.conflict-actions{display:flex;gap:0.5rem;justify-content:flex-end}
+.conflict-actions button{padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;border:0.5px solid #ccc;background:#fff}
+.conflict-actions .primary{background:#1a1a18;color:#fff;border-color:#1a1a18}
+.conflict-actions .primary:hover{background:#333}
+/* ── Task-during-trip indicator on trip rows ── */
+.trip-tasks{font-size:11px;color:#B07D2A;background:#FBF3E4;padding:1px 7px;border-radius:99px;border:0.5px solid #f0e0b8;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="top-nav">
+  <a href="index.html">Greener Edge</a>
+  <span class="sep">/</span>
+  <a href="index.html">Hub</a>
+  <span class="sep">/</span>
+  <span class="crumb">Leave Planner</span>
+  <span style="margin-left:auto"></span>
+  <a href="tasks.html" style="font-weight:500;font-size:13px;color:#666">Tasks →</a>
+</div>
+<h1>Annual Leave Planner <span class="year-label" id="year-range-label"></span><span class="save-indicator" id="save-indicator">Saved</span></h1>
+
+<!-- Conflict modal -->
+<div class="conflict-overlay" id="conflictOverlay">
+  <div class="conflict-modal">
+    <div class="conflict-title">
+      <span class="conflict-icon">!</span>
+      <span id="conflictHeader">Tasks scheduled during this leave</span>
+    </div>
+    <div class="conflict-body" id="conflictBody"></div>
+    <div class="conflict-actions">
+      <button id="conflictCancel">Cancel</button>
+      <button class="primary" id="conflictProceed">Book it anyway</button>
+    </div>
+  </div>
+</div>
+
+<div class="top-bar">
+  <div>
+    <label>Total leave days</label>
+    <input type="number" id="total-leave" value="16.8" step="0.5" min="0" max="60" style="width:80px">
+  </div>
+  <div>
+    <label>Leave year start</label>
+    <select id="leave-year-start">
+      <option value="2025">Apr 2025 - Mar 2026</option>
+      <option value="2026" selected>Apr 2026 - Mar 2027</option>
+      <option value="2027">Apr 2027 - Mar 2028</option>
+    </select>
+  </div>
+</div>
+
+<div class="stat-cards" id="stat-cards"></div>
+
+<div class="view-tabs">
+  <button class="view-tab active" onclick="switchView('month')">Month view</button>
+  <button class="view-tab" onclick="switchView('year')">Year overview</button>
+</div>
+
+<!-- MONTH VIEW -->
+<div id="view-month">
+  <div class="panel">
+    <div class="cal-header">
+      <button class="nav-btn" id="prev-month">&#8249;</button>
+      <h3 id="month-label"></h3>
+      <button class="nav-btn" id="next-month">&#8250;</button>
+    </div>
+    <div class="months-nav" id="months-nav"></div>
+    <div class="legend">
+      <span class="legend-item"><span class="legend-swatch" style="background:#c0dd97"></span>Leave</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#b5d4f4"></span>Bank holiday</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#2D5E3A;width:6px;height:6px;border-radius:50%"></span>Task due</span>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+  </div>
+</div>
+
+<!-- YEAR VIEW -->
+<div id="view-year" style="display:none">
+  <div class="panel">
+    <div class="legend" style="margin-bottom:12px">
+      <span class="legend-item"><span class="legend-swatch" style="background:#c0dd97"></span>Leave</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#b5d4f4"></span>Bank holiday</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:#2D5E3A;width:6px;height:6px;border-radius:50%"></span>Task due</span>
+    </div>
+    <div class="year-grid" id="year-grid"></div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Add a trip</h3>
+  <div class="add-trip-form">
+    <div><label>Trip name</label><input type="text" id="trip-name" placeholder="e.g. Paris break" style="width:150px"></div>
+    <div><label>Start date</label><input type="date" id="trip-start"></div>
+    <div><label>End date</label><input type="date" id="trip-end"></div>
+    <div><label>Colour</label><input type="color" id="trip-color" value="#1D9E75" style="width:50px;height:32px;padding:2px;border:0.5px solid #ccc;border-radius:6px;cursor:pointer"></div>
+    <button class="add-btn" id="add-trip-btn">Add trip</button>
+  </div>
+  <p id="add-msg"></p>
+</div>
+
+<div class="panel">
+  <h3>Trips &amp; leave schedule</h3>
+  <div id="trips-list"></div>
+</div>
+
+<script>
+const BH = {
+  2025: ['2025-01-01','2025-04-18','2025-04-21','2025-05-05','2025-05-26','2025-08-25','2025-12-25','2025-12-26'],
+  2026: ['2026-01-01','2026-04-03','2026-04-06','2026-05-04','2026-05-25','2026-08-31','2026-12-25','2026-12-28'],
+  2027: ['2027-01-01','2027-03-26','2027-03-29','2027-05-03','2027-05-31','2027-08-30','2027-12-27','2027-12-28']
+};
+
+let trips = [];
+let leaveYearStart = 2026;
+let viewYear, viewMonth;
+let currentView = 'month';
+let editingIndex = null;
+
+// ---- persistence ----
+function saveData() {
+  const data = {
+    trips: trips,
+    leaveYearStart: leaveYearStart,
+    totalLeave: document.getElementById('total-leave').value
+  };
+  localStorage.setItem('leave-planner', JSON.stringify(data));
+  const ind = document.getElementById('save-indicator');
+  ind.classList.add('show');
+  setTimeout(function() { ind.classList.remove('show'); }, 1500);
+}
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem('leave-planner');
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (data.trips) trips = data.trips;
+    if (data.leaveYearStart) {
+      leaveYearStart = data.leaveYearStart;
+      document.getElementById('leave-year-start').value = leaveYearStart;
+    }
+    if (data.totalLeave) document.getElementById('total-leave').value = data.totalLeave;
+  } catch(e) {}
+}
+
+// ---- task integration ----
+// Pull tasks with due dates from the to-do list's localStorage
+function getDuedTasks() {
+  const out = [];
+  try {
+    const raw = localStorage.getItem('ge_tasks_v2');
+    if (!raw) return out;
+    const s = JSON.parse(raw);
+    (s.sections || []).forEach(function(sec) {
+      (sec.groups || []).forEach(function(g) {
+        (g.tasks || []).forEach(function(t) {
+          if (t.due && !t.done) {
+            out.push({label: t.label, due: t.due, section: sec.name, priority: t.priority});
+          }
+        });
+      });
+    });
+  } catch(e) {}
+  return out;
+}
+
+// Map of YMD → array of tasks due that day
+function getDueDateMap() {
+  const m = {};
+  getDuedTasks().forEach(function(t) {
+    if (!m[t.due]) m[t.due] = [];
+    m[t.due].push(t);
+  });
+  return m;
+}
+
+// Tasks that fall inside [start, end] inclusive
+function tasksInRange(start, end) {
+  return getDuedTasks().filter(function(t) {
+    return t.due >= start && t.due <= end;
+  });
+}
+
+// Promise-based confirmation modal for trip-vs-task overlap
+function confirmTripWithTaskConflict(tasks, isEdit) {
+  return new Promise(function(resolve) {
+    const overlay = document.getElementById('conflictOverlay');
+    const body    = document.getElementById('conflictBody');
+    const cancel  = document.getElementById('conflictCancel');
+    const proceed = document.getElementById('conflictProceed');
+    const header  = document.getElementById('conflictHeader');
+
+    header.textContent = isEdit ? 'Tasks scheduled during this leave' : 'You have tasks due during this trip';
+    const list = tasks.map(function(t) {
+      return '<li><strong>' + t.label + '</strong> — due ' + fmt(t.due) + ' (' + t.section + ')</li>';
+    }).join('');
+    body.innerHTML =
+      'You have <strong>' + tasks.length + ' open task' + (tasks.length === 1 ? '' : 's') +
+      '</strong> with due dates inside this leave period:' +
+      '<ul class="conflict-list">' + list + '</ul>' +
+      'Move the tasks first, or book the leave anyway and reschedule them later.';
+    overlay.classList.add('open');
+
+    const cleanup = function(val) {
+      overlay.classList.remove('open');
+      cancel.removeEventListener('click', onCancel);
+      proceed.removeEventListener('click', onProceed);
+      resolve(val);
+    };
+    const onCancel = function() { cleanup(false); };
+    const onProceed = function() { cleanup(true); };
+    cancel.addEventListener('click', onCancel);
+    proceed.addEventListener('click', onProceed);
+  });
+}
+
+// Count tasks falling inside a trip
+function countTasksInTrip(t) {
+  return tasksInRange(t.start, t.end).length;
+}
+
+// ---- helpers ----
+function allBH() { return [...(BH[leaveYearStart]||[]), ...(BH[leaveYearStart+1]||[])]; }
+function toYMD(d) { return d.toISOString().slice(0,10); }
+function fmt(ymd) { const [y,m,d]=ymd.split('-'); return d+'/'+m+'/'+y; }
+function inLeaveYear(ymd) {
+  return ymd >= (leaveYearStart+'-04-01') && ymd <= ((leaveYearStart+1)+'-03-31');
+}
+
+function countLeaveDays(start, end) {
+  const bh = allBH();
+  const weekMap = {};
+  let d = new Date(start + 'T00:00:00');
+  const e = new Date(end + 'T00:00:00');
+  while (d <= e) {
+    const dow = d.getDay();
+    const ymd = toYMD(d);
+    if (dow !== 0 && dow !== 6 && !bh.includes(ymd)) {
+      const mon = new Date(d);
+      mon.setDate(d.getDate() - (dow - 1));
+      const key = toYMD(mon);
+      weekMap[key] = (weekMap[key] || 0) + 1;
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  let total = 0;
+  for (const key in weekMap) {
+    total += Math.max(0, 3 - (5 - weekMap[key]));
+  }
+  return total;
+}
+
+function getTotalUsed() { return trips.reduce(function(s,t) { return s + t.leaveDays; }, 0); }
+
+function getLeaveDateSet() {
+  const s = new Set();
+  trips.forEach(function(t) {
+    let d = new Date(t.start + 'T00:00:00');
+    const e = new Date(t.end + 'T00:00:00');
+    while (d <= e) { s.add(toYMD(d)); d.setDate(d.getDate() + 1); }
+  });
+  return s;
+}
+
+function getTripColor(ymd) {
+  for (var i = 0; i < trips.length; i++) {
+    var t = trips[i];
+    var d = new Date(t.start + 'T00:00:00');
+    var e = new Date(t.end + 'T00:00:00');
+    while (d <= e) { if (toYMD(d) === ymd) return t.color; d.setDate(d.getDate() + 1); }
+  }
+  return null;
+}
+
+function getLeaveYearMonths() {
+  const months = [];
+  for (var m = 3; m <= 11; m++) months.push({year: leaveYearStart, month: m});
+  for (var m = 0; m <= 2; m++) months.push({year: leaveYearStart + 1, month: m});
+  return months;
+}
+
+// ---- view switching ----
+window.switchView = function(v) {
+  currentView = v;
+  document.getElementById('view-month').style.display = v === 'month' ? '' : 'none';
+  document.getElementById('view-year').style.display = v === 'year' ? '' : 'none';
+  document.querySelectorAll('.view-tab').forEach(function(el) { el.classList.remove('active'); });
+  event.target.classList.add('active');
+  if (v === 'year') renderYearView();
+  else renderCalendar();
+};
+
+// ---- stats ----
+function renderStats() {
+  const total = parseFloat(document.getElementById('total-leave').value) || 16.8;
+  const used = getTotalUsed();
+  const remaining = +(total - used).toFixed(1);
+  const pct = total > 0 ? Math.round(used / total * 100) : 0;
+  document.getElementById('stat-cards').innerHTML =
+    '<div class="stat"><div class="stat-label">Total leave</div><div class="stat-value">' + total + 'd</div></div>' +
+    '<div class="stat"><div class="stat-label">Used / planned</div><div class="stat-value ' + (used > total ? 'warn' : '') + '">' + used.toFixed(1) + 'd</div></div>' +
+    '<div class="stat"><div class="stat-label">Remaining</div><div class="stat-value ' + (remaining < 0 ? 'warn' : 'ok') + '">' + remaining + 'd</div></div>' +
+    '<div class="stat"><div class="stat-label">% used</div><div class="stat-value">' + pct + '%</div></div>' +
+    '<div class="stat"><div class="stat-label">Trips planned</div><div class="stat-value">' + trips.length + '</div></div>';
+  document.getElementById('year-range-label').textContent = 'Apr ' + leaveYearStart + ' - Mar ' + (leaveYearStart + 1);
+}
+
+// ---- month calendar ----
+function renderCalendar() {
+  const bh = allBH();
+  const leaveDates = getLeaveDateSet();
+  const dueMap = getDueDateMap();
+  const today = toYMD(new Date());
+  const leaveMonths = getLeaveYearMonths();
+
+  document.getElementById('month-label').textContent =
+    new Date(viewYear, viewMonth, 1).toLocaleString('default', {month: 'long', year: 'numeric'});
+
+  document.getElementById('months-nav').innerHTML = leaveMonths.map(function(x) {
+    const label = new Date(x.year, x.month, 1).toLocaleString('default', {month: 'short'});
+    const isActive = x.year === viewYear && x.month === viewMonth;
+    return '<button class="month-btn' + (isActive ? ' active' : '') + '" onclick="gotoMonth(' + x.year + ',' + x.month + ')">' + label + '</button>';
+  }).join('');
+
+  let html = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(function(d) {
+    return '<div class="day-header">' + d + '</div>';
+  }).join('');
+
+  const first = new Date(viewYear, viewMonth, 1);
+  let startDow = first.getDay();
+  startDow = startDow === 0 ? 6 : startDow - 1;
+  for (let i = 0; i < startDow; i++) {
+    const d = new Date(viewYear, viewMonth, 1 - startDow + i);
+    html += '<div class="day other-month">' + d.getDate() + '</div>';
+  }
+
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dt = new Date(viewYear, viewMonth, d);
+    const ymd = toYMD(dt);
+    const dow = dt.getDay();
+    const isWeekend = dow === 0 || dow === 6;
+    const isBH = bh.includes(ymd);
+    const isLeave = leaveDates.has(ymd);
+    const isToday = ymd === today;
+    const inYear = inLeaveYear(ymd);
+    const dueTasks = dueMap[ymd];
+    let cls = 'day';
+    if (!inYear) cls += ' out-of-range';
+    else if (isWeekend) cls += ' weekend';
+    if (isToday) cls += ' today';
+    if (inYear && isBH && !isLeave) cls += ' bank-holiday';
+    if (isLeave) cls += ' leave';
+    const tripColor = getTripColor(ymd);
+    const dot = tripColor && !isWeekend && !isBH ? '<span class="trip-dot" style="background:' + tripColor + '"></span>' : '';
+    let taskDot = '';
+    if (dueTasks && dueTasks.length) {
+      const titles = dueTasks.map(function(t) { return t.label; }).join(' • ');
+      taskDot = '<span class="task-dot" title="' + dueTasks.length + ' task' + (dueTasks.length===1?'':'s') + ' due: ' + titles.replace(/"/g,'&quot;') + '"></span>';
+    }
+    html += '<div class="' + cls + '">' + d + dot + taskDot + '</div>';
+  }
+  document.getElementById('cal-grid').innerHTML = html;
+}
+
+// ---- year view ----
+function renderMiniMonth(year, month) {
+  const bh = allBH();
+  const leaveDates = getLeaveDateSet();
+  const dueMap = getDueDateMap();
+  const today = toYMD(new Date());
+  const label = new Date(year, month, 1).toLocaleString('default', {month: 'long', year: 'numeric'});
+
+  let html = '<div class="mini-month"><h4>' + label + '</h4><div class="mini-cal">';
+  ['M','T','W','T','F','S','S'].forEach(function(d) {
+    html += '<div class="mini-day-hdr">' + d + '</div>';
+  });
+
+  const first = new Date(year, month, 1);
+  let startDow = first.getDay();
+  startDow = startDow === 0 ? 6 : startDow - 1;
+  for (let i = 0; i < startDow; i++) html += '<div class="mini-day other-month"></div>';
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dt = new Date(year, month, d);
+    const ymd = toYMD(dt);
+    const dow = dt.getDay();
+    const isWeekend = dow === 0 || dow === 6;
+    const isBH = bh.includes(ymd);
+    const isLeave = leaveDates.has(ymd);
+    const isToday = ymd === today;
+    const inYear = inLeaveYear(ymd);
+    const dueTasks = dueMap[ymd];
+    let cls = 'mini-day';
+    if (!inYear) cls += ' out-of-range';
+    else if (isWeekend) cls += ' weekend';
+    if (isToday) cls += ' today';
+    if (inYear && isBH && !isLeave) cls += ' bank-holiday';
+    if (isLeave) cls += ' leave';
+    let taskDot = '';
+    if (dueTasks && dueTasks.length) {
+      taskDot = '<span class="task-dot" style="position:absolute;width:3px;height:3px;border-radius:50%;background:#2D5E3A;top:1px;right:1px"></span>';
+    }
+    html += '<div class="' + cls + '" style="position:relative">' + d + taskDot + '</div>';
+  }
+  html += '</div></div>';
+  return html;
+}
+
+function renderYearView() {
+  const months = getLeaveYearMonths();
+  document.getElementById('year-grid').innerHTML = months.map(function(x) {
+    return renderMiniMonth(x.year, x.month);
+  }).join('');
+}
+
+// ---- trips list with edit ----
+function renderTrips() {
+  const el = document.getElementById('trips-list');
+  if (!trips.length) { el.innerHTML = '<p class="empty">No trips added yet.</p>'; return; }
+  const sorted = trips.map(function(t, i) { return {t: t, i: i}; })
+    .sort(function(a, b) { return a.t.start.localeCompare(b.t.start); });
+
+  el.innerHTML = sorted.map(function(item) {
+    const t = item.t;
+    const i = item.i;
+    const label = t.leaveDays === 1 ? '1 AL day' : t.leaveDays + ' AL days';
+    const isEditing = editingIndex === i;
+    const taskCount = countTasksInTrip(t);
+    const taskPill = taskCount
+      ? '<span class="trip-tasks" title="Open tasks with due dates inside this trip">' + taskCount + ' task' + (taskCount===1?'':'s') + ' due</span>'
+      : '';
+    let html = '<div id="trip-row-' + i + '">';
+    html += '<div class="trip-row">' +
+      '<span class="trip-color-swatch" style="background:' + t.color + '"></span>' +
+      '<span class="trip-name">' + t.name + '</span>' +
+      '<span class="trip-dates">' + fmt(t.start) + ' - ' + fmt(t.end) + '</span>' +
+      '<span class="trip-days">' + label + '</span>' +
+      taskPill +
+      '<span class="trip-actions">' +
+        '<button class="icon-btn" onclick="startEdit(' + i + ')" title="Edit">Edit</button>' +
+        '<button class="icon-btn del" onclick="deleteTrip(' + i + ')" title="Delete">Del</button>' +
+      '</span></div>';
+
+    if (isEditing) {
+      html += '<div class="edit-form">' +
+        '<div><label>Name</label><input id="edit-name" type="text" value="' + t.name + '" style="width:140px"></div>' +
+        '<div><label>Start</label><input id="edit-start" type="date" value="' + t.start + '"></div>' +
+        '<div><label>End</label><input id="edit-end" type="date" value="' + t.end + '"></div>' +
+        '<div><label>Colour</label><input id="edit-color" type="color" value="' + t.color + '" style="width:44px;height:28px;padding:1px;border:0.5px solid #ccc;border-radius:4px;cursor:pointer"></div>' +
+        '<button class="save-btn" onclick="saveEdit(' + i + ')">Save</button>' +
+        '<button class="cancel-btn" onclick="cancelEdit()">Cancel</button>' +
+        '</div>';
+    }
+    html += '</div>';
+    return html;
+  }).join('');
+}
+
+window.startEdit = function(i) {
+  editingIndex = i;
+  renderTrips();
+};
+window.cancelEdit = function() {
+  editingIndex = null;
+  renderTrips();
+};
+window.saveEdit = function(i) {
+  const name = document.getElementById('edit-name').value.trim();
+  const start = document.getElementById('edit-start').value;
+  const end = document.getElementById('edit-end').value;
+  const color = document.getElementById('edit-color').value;
+  if (!name || !start || !end || end < start) {
+    alert('Please check the trip details.');
+    return;
+  }
+
+  const finish = function() {
+    trips[i] = {name: name, start: start, end: end, color: color, leaveDays: countLeaveDays(start, end)};
+    editingIndex = null;
+    saveData();
+    renderAll();
+  };
+
+  const conflicts = tasksInRange(start, end);
+  if (conflicts.length) {
+    confirmTripWithTaskConflict(conflicts, true).then(function(ok) { if (ok) finish(); });
+    return;
+  }
+  finish();
+};
+window.deleteTrip = function(i) {
+  if (!confirm('Delete "' + trips[i].name + '"?')) return;
+  trips.splice(i, 1);
+  editingIndex = null;
+  saveData();
+  renderAll();
+};
+
+function renderAll() {
+  renderStats();
+  if (currentView === 'year') renderYearView();
+  else renderCalendar();
+  renderTrips();
+}
+
+// ---- nav ----
+window.gotoMonth = function(y, m) { viewYear = y; viewMonth = m; renderCalendar(); };
+
+document.getElementById('prev-month').onclick = function() {
+  const months = getLeaveYearMonths();
+  const idx = months.findIndex(function(x) { return x.year === viewYear && x.month === viewMonth; });
+  if (idx > 0) { viewYear = months[idx-1].year; viewMonth = months[idx-1].month; renderCalendar(); }
+};
+document.getElementById('next-month').onclick = function() {
+  const months = getLeaveYearMonths();
+  const idx = months.findIndex(function(x) { return x.year === viewYear && x.month === viewMonth; });
+  if (idx < months.length - 1) { viewYear = months[idx+1].year; viewMonth = months[idx+1].month; renderCalendar(); }
+};
+
+document.getElementById('leave-year-start').onchange = function(e) {
+  leaveYearStart = parseInt(e.target.value);
+  viewYear = leaveYearStart; viewMonth = 3;
+  trips = [];
+  editingIndex = null;
+  saveData();
+  renderAll();
+};
+
+document.getElementById('total-leave').onchange = function() { saveData(); renderStats(); };
+
+document.getElementById('add-trip-btn').onclick = function() {
+  const name = document.getElementById('trip-name').value.trim();
+  const start = document.getElementById('trip-start').value;
+  const end = document.getElementById('trip-end').value;
+  const color = document.getElementById('trip-color').value;
+  const msg = document.getElementById('add-msg');
+  if (!name) { msg.style.color = '#b45309'; msg.textContent = 'Please enter a trip name.'; return; }
+  if (!start || !end) { msg.style.color = '#b45309'; msg.textContent = 'Please enter start and end dates.'; return; }
+  if (end < start) { msg.style.color = '#b45309'; msg.textContent = 'End date must be after start date.'; return; }
+  const leaveDays = countLeaveDays(start, end);
+
+  const finish = function() {
+    trips.push({name: name, start: start, end: end, color: color, leaveDays: leaveDays});
+    msg.style.color = '#166534';
+    msg.textContent = 'Added "' + name + '" - ' + leaveDays + ' AL day' + (leaveDays === 1 ? '' : 's') + ' used.';
+    document.getElementById('trip-name').value = '';
+    document.getElementById('trip-start').value = '';
+    document.getElementById('trip-end').value = '';
+    viewYear = parseInt(start.slice(0, 4));
+    viewMonth = parseInt(start.slice(5, 7)) - 1;
+    saveData();
+    renderAll();
+  };
+
+  // Cross-check the to-do list for tasks due in this trip's date range
+  const conflicts = tasksInRange(start, end);
+  if (conflicts.length) {
+    confirmTripWithTaskConflict(conflicts, false).then(function(ok) { if (ok) finish(); });
+    return;
+  }
+  finish();
+};
+
+// ---- init ----
+loadData();
+leaveYearStart = parseInt(document.getElementById('leave-year-start').value);
+viewYear = leaveYearStart; viewMonth = 3;
+renderAll();
+
+// Cross-tab refresh — if tasks change in another tab, redraw so dots/counts update
+window.addEventListener('storage', function(e) {
+  if (e.key === 'ge_tasks_v2') renderAll();
+});
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) renderAll();
+});
+</script>
+</body>
+</html>
